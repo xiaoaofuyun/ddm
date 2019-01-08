@@ -1,0 +1,37 @@
+.index_top{
+  height: 70px;
+  /*border: 1px solid red;*/
+  background: url("../images/index_top.jpg") repeat-x;
+  text-align: left;
+}
+.top_bottom{
+  height: 20px;
+  background: url("../images/top_bootom3.png") repeat-x;
+}
+.left{
+  width:23%;
+  float:left;
+  border-right: 2px solid cornflowerblue;
+  height: 1000px;
+  background-color: azure;
+}
+.right{
+  width:76%;
+  float: right;
+  background-color: #97cbff;
+  height: 1000px;
+
+}
+.footer{
+  clear: both;
+  height: 70px;
+  background-color: #66b3ff;
+}
+.nav_url{
+  background-color: #97cbff;
+  cursor: pointer;
+}
+.nav_url:hover{
+  background-color: #b7d2ff;
+}
+

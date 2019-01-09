@@ -130,7 +130,7 @@
                       console.log(response.data);
                       alert('登录成功');
                       //_this.$router.push('/');
-                      window.location.href='http://localhost:8082/#/';
+                      window.location.href=_this.global.pathurl;
 
                     }else{
 

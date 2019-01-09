@@ -35,6 +35,15 @@ import udel from '@/components/user/udel'
 import uupdate from '@/components/user/uupdate'
 import create from '@/components/user/create'
 import repwd from '@/components/user/repwd'
+import rdel from '@/components/role/rdel'
+import rindex from '@/components/role/rindex'
+import rlist from '@/components/role/rlist'
+import rupdate from '@/components/role/rupdate'
+import pdel from '@/components/permission/pdel'
+import pindex from '@/components/permission/pindex'
+import plist from '@/components/permission/plist'
+import prlist from '@/components/permission/prlist'
+import pupdate from '@/components/permission/pupdate'
 Vue.use(Router)
 
 export default new Router({
@@ -192,6 +201,42 @@ export default new Router({
       path: '/user/uupdate',
       name: 'uupdate',
       component: uupdate
+    },{
+      path: '/role/rdel',
+      name: 'rdel',
+      component: rdel
+    },{
+      path: '/role/rindex',
+      name: 'rindex',
+      component: rindex
+    },{
+      path: '/role/rlist',
+      name: 'rlist',
+      component: rlist
+    },{
+      path: '/role/rupdate',
+      name: 'rupdate',
+      component: rupdate
+    },{
+      path: '/permission/pupdate',
+      name: 'pupdate',
+      component: pupdate
+    },{
+      path: '/permission/pdel',
+      name: 'pdel',
+      component: pdel
+    },{
+      path: '/permission/plist',
+      name: 'plist',
+      component: plist
+    },{
+      path: '/permission/prlist',
+      name: 'prlist',
+      component: prlist
+    },{
+      path: '/permission/pindex',
+      name: 'pindex',
+      component: pindex
     }
   ]
 })

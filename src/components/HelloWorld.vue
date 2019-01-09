@@ -36,6 +36,8 @@
         <li><a :href="pathurl+'navlist/test'" target="rightdis">test测试</a></li>
         <li><a :href="pathurl+'company/cpindex'" target="rightdis">企业单位管理</a></li>
         <li><a :href="pathurl+'user/ulist'" target="rightdis">用户管理</a></li>
+        <li><a :href="pathurl+'role/rlist'" target="rightdis">角色管理</a></li>
+        <li><a :href="pathurl+'permission/plist'" target="rightdis">权限管理</a></li>
       </ul>
     </div>
 
@@ -191,9 +193,10 @@ created: function () {
               // 一级菜单，默认显示。
               if(data[i].pid == 0)
               {
-                menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList" ><a   class="navhit"  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</a>';
+
+                menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" ><a   class="navhit"  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</a>';
               }else{
-                menu_body += '<li style="position:relative;left:data[i].level*10px" id="' + data[i].tree_menu_id + '" class="menuList" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</a>';
+                menu_body += '<li style="position:relative;" id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</a>';
               }
               if(data[i].children && data[i].children.length > 0){
                 menu_body += createMenu(data[i].children)
@@ -208,7 +211,7 @@ created: function () {
           // 菜单初始化。
           var tree;
           tree = toTree(arr, 0,0);
-          // console.log(tree);
+           console.log(tree);
 
           var menu_body = createMenu(tree);
           $("#menu1").empty();
@@ -224,7 +227,16 @@ created: function () {
             //console.log($('#rigpa').attr('src'));
             $('#rigpa').attr('src',$(this)[0].firstChild.href)
             //console.log($('#rigpa').attr('src'));
+            $('.menuList a').css('display','block')
+            $('.menuList a').css('background','')
+            $(this)[0].firstChild.style.background='red';
+         /*   var menuthis=$(this)[0];
+            menuthis.style.background='red';
 
+*/         $('.menuList').css('background','');
+          /*$(this).first().css('background','red');
+          console.log($(this).first())
+          $(this).find('li').css('background','');*/
             $(this).find("li").click(function(event) {
               return false;
             })
@@ -235,6 +247,7 @@ created: function () {
               $(this).find("li").hide();
             } else {
               $(this).addClass("shows");
+
               $(this).find("li").show();
               $(this).find("li").find("ul").find("li").hide();
               $(this).show();

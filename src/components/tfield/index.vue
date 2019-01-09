@@ -1,7 +1,7 @@
 <template>
 <div>
 <form>
-  <table width="500px" height="600px" cellspacing="0" border="1" style="border-collapse:collapse;">
+  <table class="xinjiantab" width="500px" height="600px" cellspacing="0" border="1" style="border-collapse:collapse;margin: 20px auto">
     <tr>
       <td>表ID</td><td><input type="text" v-model="menu_table_id"></td> </tr>
     <tr><td>字段名称(英文)</td><td><input type="text"  v-model="field_name"></td></tr>
@@ -41,7 +41,7 @@
       <option value="1">是</option>
       <option value="0" selected="selected">否</option>
     </select></td></tr>
-    <tr><td></td><td><input type="button" value="提交" @click="submit()"></td></tr>
+    <tr><td></td><td><input class="xinjiantab_but" type="button" value="提交" @click="submit()"></td></tr>
 
 
 
@@ -109,5 +109,27 @@
 </script>
 
 <style scoped>
-
+  .xinjiantab input{
+    width: 96%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    display: block;
+    margin: 0 auto;
+  }
+  .xinjiantab select{
+    width: 96%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    display: block;
+    margin: 0 auto;
+    height: 30px;
+  }
+  .xinjiantab_but{
+    background-color: #579fe9;
+    color:#fff;
+  }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div>
+  <div class="cptop">
     <span> <router-link to="/company/cpindex">所有单位</router-link></span>
     <span> <router-link to="/company/list">部门查看</router-link></span>
     <span> <router-link to="/department/dindex">添加部门</router-link></span>
@@ -64,5 +64,21 @@
 </script>
 
 <style scoped>
-
+  .cptop{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+  }
+  .cptop span{
+    margin-right: 20px;
+  }
+  .cptop span a{
+    line-height: 30px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+  }
 </style>

@@ -1,21 +1,16 @@
 <template>
   <div>
-  <div style="width: 100%;height: 50px ;background-color: gold">
+  <div style="width: 100%;height: 50px ;border-bottom: 2px solid #579fe9">
       <div style="float: right;">
-        <ul>
+        <ul class="listul">
           <li><router-link to="/navlist/tableadd"  >新建表</router-link></li>
           <li><router-link to="/navlist/tableup"   >修改</router-link></li>
           <li><router-link to="/navlist/tabledel" >删除 </router-link></li>
-          <li><router-link to="/navlist/tablesel"  >查询 </router-link>
-
-          </li>
-
+          <li><router-link to="/navlist/tablesel"  >查询 </router-link></li>
           <li><router-link to="/tfield/index"  >新建表字段</router-link></li>
           <li><router-link to="/tfield/del"   >删除表字段</router-link></li>
           <li><router-link to="/tfield/list" >查看表字段</router-link></li>
-          <li><router-link to="/tfield/dtype"  >查询数据类型 </router-link>
-
-          </li>
+          <li><router-link to="/tfield/dtype"  >查询数据类型 </router-link></li>
         </ul>
       </div>
   </div>
@@ -24,7 +19,7 @@
 
       <span id="spanid">菜单导航ID:{{ids}}</span>
 
-      <iframe id="framestate"   style="height: 920px" width="100%;"  src="http://localhost:8082/#/navlist/tableadd" frameborder="0" :data_id="ids" name="tablelist" >
+      <iframe id="framestate"    width="100%;"  src="http://localhost:8083/#/navlist/tableadd" frameborder="0" :data_id="ids" name="tablelist" >
 
       </iframe>
       <!--<div style="height: 750px;width: 100%;background-color: #00ee00"></div>-->
@@ -94,5 +89,10 @@
   ul>li {
     float:left;
     margin:5px;
+  }
+  .listul a{
+    text-decoration: none;
+    color:#333;
+    line-height: 40px;
   }
 </style>

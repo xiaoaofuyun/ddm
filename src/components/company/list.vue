@@ -12,7 +12,15 @@
   <div class="cptop_div">
     <form >
 
-      <h2>单位编号ID</h2> <input type="text" v-model="company_id">
+      <h2>单位</h2>
+
+      <select name="" v-model="company_id"  style="width: 370px;height: 40px;">
+        <option v-for="item in citems" :value="item.company_id">
+          {{item.name}}
+        </option>
+
+      </select>
+      <!--<input type="text" v-model="company_id">-->
 
       <button class="cptop_div_but" @click="csel()" >搜索</button>
     </form>
@@ -43,7 +51,7 @@
     export default {
         name: "list",
       mounted:function () {
-       // this.csel()
+       this.compsel();
         this.departmentshow();
       },
 
@@ -51,8 +59,28 @@
           return{
                company_id:'',
             items:'',
+            citems:'',
           }
     },methods:{
+        compsel:function () {
+          var _this=this;
+          this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
+
+
+
+          }),{
+            headers:
+              {
+
+                'Content-Type':'application/x-www-form-urlencoded',
+                "Authorization": 'Bearer'+' '+token,
+              }
+          }).then(function (res) {
+            _this.citems=res.data.result;
+            //console.log(res.data.result);
+
+          })
+        },
           departmentshow:function () {
             var nid=this.$route.query.id;
             var _this=this;

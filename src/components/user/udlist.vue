@@ -13,7 +13,20 @@
   <form >
 
     <div class="pindex_top">
-      <h2>部门编号ID</h2><input type="text" v-model="department_id"><button @click="csel()" >搜索</button>
+      <h2>单位：  </h2> <select name="" v-model="company_id" @change="getdp(company_id)" style="height: 30px;width: 300px">
+      <option v-for="item in citems" :value="item.company_id">
+        {{item.name}}
+      </option>
+
+    </select>
+      <h2>  &nbsp;部门 ：  </h2>
+      <select v-model="department_id" style="width: 300px;height: 30px;">
+      <option v-for="item in dpitems" :value="item.department_id" >
+        {{item.name}}
+      </option>
+
+    </select>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button @click="csel()" >&nbsp;搜索</button>
     </div>
     <!--部门编号ID <input type="text" v-model="department_id">-->
 
@@ -46,15 +59,57 @@
   export default {
     name: "udlist",
     mounted:function () {
-
+     this.compsel();
     },
 
     data(){
       return{
         department_id:'',
+        company_id:'',
         items:'',
+        citems:'',
+        dpitems:'',
       }
     },methods:{
+      compsel:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
+
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.citems=res.data.result;
+          //console.log(res.data.result);
+
+        })
+      },
+      getdp:function (id) {
+
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/department/list',qs.stringify({
+          company_id:id
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.dpitems=res.data.result;
+          //console.log(res);
+
+        })
+      },
      csel:function () {
         var _this=this;
         this.$axios.post(_this.global.repathurl+'api/user/dlist',qs.stringify({

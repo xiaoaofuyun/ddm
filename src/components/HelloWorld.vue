@@ -38,7 +38,8 @@
         <li><a :href="pathurl+'company/cpindex'" target="rightdis">企业单位管理</a></li>
         <li><a :href="pathurl+'user/ulist'" target="rightdis">用户管理</a></li>
         <li><a :href="pathurl+'role/rlist'" target="rightdis">角色管理</a></li>
-        <li><a :href="pathurl+'permission/plist'" target="rightdis">权限管理</a></li>
+        <li><a :href="pathurl+'permission/plist'" target="rightdis">权限管理
+        </a></li>
 
 
 
@@ -102,9 +103,10 @@
 
 </style>
 <script>
+
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
-  console.log(token);
+  //console.log(token);
 
 //     import '../assets/js/jquery-1.8.3.min.js';
 //     $("#menu li").click(function () {
@@ -141,7 +143,8 @@ export default {
   data () {
     return {
       msg: '11111',
-      pathurl:this.global.pathurl
+      pathurl:this.global.pathurl,
+
     }
   },
 created: function () {
@@ -189,8 +192,10 @@ created: function () {
     //方法左边导航
     ,menushow:function () {
       window.location.reload();
+
     }
     ,getMenu:function () {
+      // console.log(sessionStorage.getItem('loginname'));
 
       //this.reload();
       var _this=this;

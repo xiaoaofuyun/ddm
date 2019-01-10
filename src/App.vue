@@ -16,7 +16,8 @@ export default {
   name: 'App',
   provide (){
     return {
-      reload:this.reload
+      reload:this.reload,
+
     }
   },
   data(){
@@ -28,12 +29,19 @@ export default {
 
 
   },
+  mounted:function(){
+    this.islogin();
+  },
   methods:{
     reload (){
       this.isRouterAlive = false
       this.$nextTick(function(){
         this.isRouterAlive = true
       })
+    },islogin:function () {
+      if(sessionStorage.getItem('loginname')==null){
+        window.location.href=this.global.pathurl+'login';
+      }
     }
   }
 }

@@ -14,7 +14,17 @@
 
        <table  class="bianjitable" style="width: 500px;  margin: 0 auto;border-collapse:collapse;" border="1">
 
-         <tr><td>用户ID</td><td><input type="text" v-model="user_id"></td></tr>
+         <tr><td>用户</td><td>
+
+           <!--<input type="text" v-model="user_id">-->
+           <select name="" v-model="user_id" >
+             <option v-for="item in uitems" :value="item.user_id">
+               {{item.username}}
+             </option>
+
+           </select>
+
+         </td></tr>
          <tr><td>密码</td><td><input type="text" v-model="password"></td></tr>
          <!--<tr><td></td><td><input type="button" @click="submit" value="提交"></td></tr>-->
        </table>
@@ -31,15 +41,35 @@
   export default {
     name: "repwd",
     mounted:function () {
-
+     this.userlist();
     },
 
     data(){
       return{
         user_id:'',
         password:'',
+        uitems:'',
       }
     },methods:{
+      userlist:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/user/list',qs.stringify({
+
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.uitems=res.data;
+          //console.log(res);
+
+        })
+      },
       submit:function () {
         var _this=this;
         this.$axios.post(_this.global.repathurl+'api/user/repwd',qs.stringify({

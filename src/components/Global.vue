@@ -6,13 +6,19 @@
 const repathurl='http://192.168.0.46:8777/'
 
 
-
-  const pathurl='http://localhost:8087/#/'
+  const pathurl='http://localhost:8083/#/'
 
     export default {
         name: "Global",
        pathurl,
       repathurl,
+      data(){
+          return{
+            
+          }
+      },methods:{
+
+      }
     }
 </script>
 

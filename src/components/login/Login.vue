@@ -116,6 +116,7 @@
                       //console.log(cookie.get('token'));
                       console.log(response.data);
                       alert('登录成功');
+                      sessionStorage.loginname = 'loginname';
                       //_this.$router.push('/');
                       window.location.href=_this.global.pathurl;
 

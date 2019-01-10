@@ -4,7 +4,7 @@
 
   <div  class="cptop">
     <span> <router-link to="/permission/pindex">权限新增</router-link></span>
-    <span> <router-link to="/permission/pupdate">权限修改</router-link></span>
+    <!--<span> <router-link to="/permission/pupdate">权限修改</router-link></span>-->
     <span> <router-link to="/permission/plist">权限列表</router-link></span>
     <span> <router-link to="/permission/prlist">查询角色下所有权限</router-link></span>
 
@@ -192,11 +192,17 @@
     text-align: center;
     border: 1px solid #ccc;
     margin: 0 0 -1px -1px;
+    font-weight: normal;
   }
   .quanxianlist li.on{
     width: 20%;
   }
   .quanxianlist li h2.on{
     background-color: #e5e5e5;
+  }
+  @media screen and (max-width: 1366px){
+    .quanxianlist li h2{
+      font-size: 14px;
+    }
   }
 </style>

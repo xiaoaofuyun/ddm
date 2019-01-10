@@ -11,8 +11,26 @@
     <br>
   <form>
     <table class="bianjitable" style="width: 500px;  margin: 0 auto;border-collapse:collapse;" border="1">
-      <tr><td>单位编号</td><td><input type="text" v-model="company_id"></td></tr>
-      <tr><td>部门编号</td><td><input type="text" v-model="department_id"></input></td></tr>
+      <tr><td>单位</td><td>
+        <select name="" v-model="company_id" @change="getdp(company_id)">
+          <option v-for="item in citems" :value="item.company_id">
+            {{item.name}}
+          </option>
+
+        </select>
+        <!--<input type="text" v-model="company_id">-->
+
+      </td></tr>
+      <tr><td>部门</td><td>
+
+        <select v-model="department_id">
+          <option v-for="item in dpitems" :value="item.department_id" >
+            {{item.name}}
+          </option>
+
+        </select>
+
+      </td></tr>
       <tr><td>用户名</td><td><input type="text" v-model="username"></td></tr>
 
       <tr><td>密码</td><td><input type="text" v-model="password"> </td></tr>
@@ -45,14 +63,54 @@
         password:'',
         email:'',
 
-        order:''
+        order:'',
+        citems:'',
+        dpitems:'',
       }
     },
     mounted:function(){
-
+     this.csel();
     },
     methods: {
+      getdp:function (id) {
 
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/department/list',qs.stringify({
+          company_id:id
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.dpitems=res.data.result;
+          //console.log(res);
+
+        })
+      },
+      csel:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
+
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.citems=res.data.result;
+          //console.log(res.data.result);
+
+        })
+      },
       submit:function () {
         this.$axios.post(this.global.repathurl+'api/user/create ',qs.stringify({
           name:this.name,

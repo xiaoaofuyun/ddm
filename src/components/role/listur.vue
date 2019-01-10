@@ -17,7 +17,21 @@
 
     <!--</table>-->
     <div class="pindex_top">
-      <h2>角色编号</h2><input type="text" v-model="role_id"><input type="button" @click="search" value="搜索">
+      <h2>单位：</h2>
+      <select name="" v-model="company_id" @change="getdp(company_id)" style="width: 300px;height: 30px;">
+        <option v-for="item in citems" :value="item.company_id">
+          {{item.name}}
+        </option>
+
+      </select>
+      <h2>角色：</h2>
+      <select v-model="role_id" style="width: 300px;height: 30px;">
+        <option v-for="item in ritems" :value="item.role_id" >
+          {{item.name}}
+        </option>
+
+      </select>
+      <input type="button" @click="search" value="搜索">
     </div>
   </form>
   <table class="yhtable" style="width: 98%; margin: 20px auto;border-collapse:collapse;" border="1">
@@ -44,15 +58,56 @@
     name: "listur",
     mounted:function () {
 
-      //this.roleshow();
+      this.csel();
     },
 
     data(){
       return{
         role_id:'',
         items:'',
+        ritems:'',
+        citems:'',
       }
     },methods:{
+      csel:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
+
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.citems=res.data.result;
+          //console.log(res.data.result);
+
+        })
+      },
+      getdp:function (id) {
+
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/role/list',qs.stringify({
+          company_id:id
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.ritems=res.data.result;
+          //console.log(res);
+
+        })
+      },
       search:function () {
 
         var _this=this;

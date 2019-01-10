@@ -2,7 +2,7 @@
 <div>
   <div class="cptop">
     <span> <router-link to="/permission/pindex">权限新增</router-link></span>
-    <span> <router-link to="/permission/pupdate">权限修改</router-link></span>
+    <!--<span> <router-link to="/permission/pupdate">权限修改</router-link></span>-->
     <span> <router-link to="/permission/plist">权限列表</router-link></span>
     <span> <router-link to="/permission/prlist">查询角色下所有权限</router-link></span>
 
@@ -15,7 +15,19 @@
       <!--<tr><td>角色编号</td><td><input type="text" v-model="role_id"></td><td><input type="button" @click="search" value="搜索"></td></tr>-->
     <!--</table>-->
     <div class="pindex_top">
-      <h2>角色编号</h2><input type="text" v-model="role_id"><input type="button" @click="search" value="搜索">
+      <h2>单位：</h2>
+      <select name="" v-model="company_id" @change="getdp(company_id)" style="width: 300px;height: 30px;">
+        <option v-for="item in citems" :value="item.company_id">
+          {{item.name}}
+        </option>
+
+      </select>
+      <h2>角色</h2><select v-model="role_id" style="width: 300px;height: 30px;">
+      <option v-for="item in ritems" :value="item.role_id" >
+        {{item.name}}
+      </option>
+
+    </select><input type="button" @click="search" value="搜索">
     </div>
   </form>
 
@@ -116,6 +128,7 @@
     mounted:function () {
 
       //this.roleshow();
+      this.csel();
     },
 
     data(){
@@ -123,8 +136,49 @@
         role_id:'',
         items:'',
         permission_column_id:'',
+        ritems:'',
+        citems:'',
       }
     },methods:{
+      csel:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
+
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.citems=res.data.result;
+          //console.log(res.data.result);
+
+        })
+      },
+      getdp:function (id) {
+
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/role/list',qs.stringify({
+          company_id:id
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.ritems=res.data.result;
+          //console.log(res);
+
+        })
+      },
       search:function () {
 
         var _this=this;

@@ -11,8 +11,20 @@
     <br>
     <form>
       <table class="bianjitable" style="width: 500px;  margin: 0 auto;border-collapse:collapse;" border="1">
-        <tr><td>单位编号</td><td><input type="text" :company_id="company_id" id="company_id"></td></tr>
-        <tr><td>部门编号</td><td><input type="text" :department_id="department_id" id="department_id"></input></td></tr>
+        <tr><td>单位</td><td>
+          <select name="" v-model="company_id" @change="getdp(company_id)">
+          <option v-for="item in citems" :value="item.company_id">
+            {{item.name}}
+          </option>
+
+        </select>
+        </td></tr>
+        <tr><td>部门</td><td><select v-model="department_id">
+          <option v-for="item in dpitems" :value="item.department_id" >
+            {{item.name}}
+          </option>
+
+        </select></td></tr>
         <tr><td>用户名</td><td><input type="text" :username="username" id="username"></td></tr>
 
         <!--<tr><td>密码</td><td><input type="text" :password="password" id="password"> </td></tr>-->
@@ -44,13 +56,55 @@
         // password:'',
         email:'',
 
-        order:''
+        order:'',
+        citems:'',
+        dpitems:'',
       }
     },
     mounted:function(){
      this.update();
+      this.csel();
     },
     methods: {
+      getdp:function (id) {
+
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/department/list',qs.stringify({
+          company_id:id
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.dpitems=res.data.result;
+          //console.log(res);
+
+        })
+      },
+      csel:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
+
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.citems=res.data.result;
+          //console.log(res.data.result);
+
+        })
+      },
       update:function() {
         var nid=this.$route.query.id;
         //console.log(nid);
@@ -97,8 +151,8 @@
 
 
           name: $('#name').val(),
-          department_id:$('#department_id').val(),
-          company_id:$('#company_id').val(),
+          department_id:that.department_id,
+          company_id:that.company_id,
           username:Base64.encode($('#username').val()),
           // password:Base64.encode($('#password').val()),
           email:$('#email').val(),

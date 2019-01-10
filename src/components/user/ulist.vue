@@ -17,8 +17,9 @@
       <td>{{item.user_id}}</td>
       <td>{{item.company_group_id}}</td>
       <td>{{item.name}}</td>
-      <td>{{item.email}}</td>
+
       <td>{{item.username}}</td>
+      <td>{{item.email}}</td>
       <td>
 
         <router-link :to="{path:'/user/uupdate',query:{id:item.user_id}}">编辑</router-link>

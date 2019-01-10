@@ -16,10 +16,19 @@
      <!--</table>-->
 
     <div class="pindex_top">
-      <h2>单位编号</h2><input type="text" v-model="company_id"><input type="button" @click="search" value="搜索">
+      <h2>单位</h2>
+      <select name="" v-model="company_id" style="margin-left:10px;height: 28px;width: 250px;" >
+        <option v-for="item in citems" :value="item.company_id">
+          {{item.name}}
+        </option>
+
+      </select>
+
+
+      <input type="button" @click="search" value="搜索">
     </div>
   </form>
-  </form>
+
   <table class="yhtable" style="width: 98%; margin:  20px auto;border-collapse:collapse;" border="1">
 
   <th>角色编号</th>  <th>角色名称</th><th>操作</th>
@@ -48,15 +57,35 @@
     name: "rlist",
     mounted:function () {
 
-      //this.roleshow();
+      this.csel();
     },
 
     data(){
       return{
         company_id:'',
         items:'',
+        citems:'',
       }
     },methods:{
+      csel:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
+
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.citems=res.data.result;
+          //console.log(res.data.result);
+
+        })
+      },
      search:function () {
 
         var _this=this;

@@ -14,7 +14,16 @@
 
     <tr><td>角色名称</td><td><input type="text" v-model="name"></td></tr>
       <tr><td>角色描述</td><td><textarea name="" id="" cols="30" rows="10" v-model="describe"></textarea></td></tr>
-      <tr><td>单位编号</td><td><input type="text" v-model="company_id"></td></tr>
+      <tr><td>单位编号</td><td>
+
+        <select name="" v-model="company_id" >
+          <option v-for="item in citems" :value="item.company_id">
+            {{item.name}}
+          </option>
+
+        </select>
+
+      </td></tr>
       <!--<tr><td colspan="2"><input type="button" value="提交" @click="rolesubmit"></td></tr>-->
     </table>
     <input class="bianjitable_but" type="button" value="提交" @click="rolesubmit">
@@ -33,16 +42,36 @@
     name: "rindex",
     mounted:function () {
 
-      //this.roleshow();
+      this.csel();
     },
 
     data(){
       return{
         name:'',
         describe:'',
-        company_id:''
+        company_id:'',
+        citems:'',
       }
     },methods:{
+      csel:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
+
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.citems=res.data.result;
+          //console.log(res.data.result);
+
+        })
+      },
       rolesubmit:function () {
 
         var _this=this;

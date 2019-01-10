@@ -22,8 +22,13 @@
         <option value="0">否</option>
       </select></td></tr>
       <tr><td>排序</td><td><input type="text" v-model="order"></td></tr>
-      <tr><td>单位编号</td><td>
-        <input type="text" v-model="company_id">
+      <tr><td>单位</td><td>
+        <select name="" v-model="company_id" >
+          <option v-for="item in citems" :value="item.company_id">
+            {{item.name}}
+          </option>
+
+        </select>
 
 
       </td></tr>
@@ -53,15 +58,34 @@
 
         is_flag:'',
         company_id:'',
-        order:''
+        order:'',
+        citems:'',
       }
     },
     mounted:function(){
-
+      this.csel();
     },
     methods: {
 
+      csel:function () {
+        var _this=this;
+        this.$axios.post(_this.global.repathurl+'api/company/list',qs.stringify({
 
+
+
+        }),{
+          headers:
+            {
+
+              'Content-Type':'application/x-www-form-urlencoded',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+          _this.citems=res.data.result;
+          //console.log(res.data.result);
+
+        })
+      },
       submit:function () {
         var that=this;
         this.$axios.post(this.global.repathurl+'api/department/index ',qs.stringify({

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div>
+  <div class="cptop">
     <span> <router-link to="/company/cpindex">所有单位</router-link></span>
     <span> <router-link to="/company/list">部门查看</router-link></span>
     <span> <router-link to="/department/dindex">添加部门</router-link></span>
@@ -9,13 +9,16 @@
     <span><router-link to="/company/del">删除单位</router-link></span>-->
   </div>
   <br>
-  <form >
+  <div class="cptop_div">
+    <form >
 
-    单位编号ID <input type="text" v-model="company_id">
+      <h2>单位编号ID</h2> <input type="text" v-model="company_id">
 
-    <button @click="csel()" >搜索</button>
-  </form>
-  <table style=" margin: 0 auto;border-collapse:collapse;" border="1">
+      <button class="cptop_div_but" @click="csel()" >搜索</button>
+    </form>
+  </div>
+
+  <table class="cptop_table" style=" margin: 0 auto;border-collapse:collapse;" border="1">
 
   <th>单位编号</th><th>部门编号</th>  <th>部门名称</th><th>操作</th>
     <tr  v-for="item in items">
@@ -94,5 +97,68 @@
 </script>
 
 <style scoped>
-
+  .cptop{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+  }
+  .cptop span{
+    margin-right: 20px;
+  }
+  .cptop span a{
+    line-height: 30px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .cptop_table{
+    width: 98%;
+    margin: 20px auto;
+  }
+  .cptop_table th{
+    line-height: 40px;
+    background-color: #f2f2f2;
+  }
+  .cptop_table td{
+    line-height: 35px;
+  }
+  .cptop_div{
+    width: 98%;
+    margin: 20px auto;
+  }
+  .cptop_div h2{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    line-height: 40px;
+    margin-right: 2%;
+  }
+  .cptop_div input{
+    height: 40px;
+    overflow: hidden;
+    line-height: 40px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    display: inline-block;
+    vertical-align: middle;
+    width: 40%;
+  }
+  .cptop_div_but{
+    height: 40px;
+    line-height: 40px;
+    background-color: #579fe9;
+    color:#fff;
+    font-size: 16px;
+    border: 1px solid #579fe9;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    width: 10%;
+    cursor: pointer;
+  }
 </style>

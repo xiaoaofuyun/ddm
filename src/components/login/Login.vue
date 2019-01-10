@@ -1,43 +1,30 @@
-<template>
+﻿<template>
 
     <div class="head">
       <div >
         <div class="top">
-
-
-        <table style="margin: auto">
-
-
+          <h2 class="top_h2">越中档案管理系统</h2>
+        <table style="margin: auto" class="top_table">
           <tr>
-            <td> <span>用户名：</span></td><td><input type="text" v-model="username" placeholder="请输入登录名"></td><td></td>
+            <td> <span>用户名：</span></td>
+            <td><input type="text" v-model="username" placeholder="请输入登录名"></td>
+            <!--<td></td>-->
           </tr>
-          <br/>
           <tr>
-            <td>  <span>密     &nbsp;&nbsp;码：</span></td><td><input type="text" v-model="password" placeholder="请输入密码"></td><td>
-            <input class="lg_btn" type="submit" v-on:click="dothis" value="提交">
-          </td>
+            <td>  <span>密     &nbsp;&nbsp;码：</span></td>
+            <td><input type="password" v-model="password" placeholder="请输入密码"></td>
+            <td><input class="lg_btn" type="submit" v-on:click="dothis" value="提交"></td>
           </tr>
         </table>
           <!--{{username}}11111111111{{password}}1111111111{{sign}}-->
         </div>
-
-
-
-
-
       </div>
-
-
-
-
-
-
-
     </div>
-
 </template>
 <style>
   @import url('../../assets/css/login.css');
+
+
 
 
 </style>

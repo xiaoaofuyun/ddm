@@ -2,12 +2,19 @@
 <div>
   <div style="text-align: center">
   <form>
-    <table style="width: 300px;margin: 0 auto;height: 200px">
-          <tr><td>导航名称：</td><td><input type="text" v-model="navname" id="navname"></td></tr>
-          <tr><td>导航分类：</td><td><select v-model="selclassfiy" name=""  id="selclass" style="width: 150px">
-            </select></td></tr>
-      <tr><td colspan="2"> <button style="height: 35px;width: 100px" @click="updatedo()">保存修改</button></td></tr>
-    </table>
+    <!--<table style="width: 400px;margin: 20px auto;padding: 20px;box-sizing: border-box;background-color: #f7f7f7;">-->
+          <!--<tr><td>导航名称：</td><td><input type="text" v-model="navname" id="navname"></td></tr>-->
+          <!--<tr><td>导航分类：</td><td><select v-model="selclassfiy" name=""  id="selclass" >-->
+            <!--</select></td></tr>-->
+      <!--<tr><td> <button style="height: 35px;width: 100px" @click="updatedo()">保存修改</button></td></tr>-->
+    <!--</table>-->
+      <div class="tableaddbox">
+          <h2 class="tableaddbox_h2">导航名称：</h2>
+          <input type="text" v-model="navname" id="navname">
+          <h2 class="tableaddbox_h2">导航分类：</h2>
+          <select v-model="selclassfiy" name=""  id="selclass" ></select>
+          <button class="tableaddbox_but" @click="updatedo()">保存修改</button>
+      </div>
   </form>
   </div>
 </div>
@@ -132,5 +139,49 @@
 </script>
 
 <style scoped>
-
+    .tableaddbox{
+        width: 400px;
+        margin: 20px auto;
+        background-color: #f7f7f7;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .tableaddbox_h2{
+        font-size: 16px;
+        line-height: 30px;
+        color:#333;
+        text-align: left;
+    }
+    .tableaddbox input{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        overflow: hidden;
+        border:1px solid #ccc;
+        margin: 5px 0;
+    }
+    .tableaddbox select{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        overflow: hidden;
+        border:1px solid #ccc;
+        margin: 5px 0;
+    }
+    .tableaddbox_but{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        background-color: #579fe9;
+        color:#fff;
+        font-size: 16px;
+        text-align: center;
+        border:1px solid #579fe9;
+        margin-top: 10px;
+        cursor: pointer;
+    }
 </style>

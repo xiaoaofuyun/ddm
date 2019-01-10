@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div>
+  <div  class="cptop">
     <span> <router-link to="/company/cpindex">所有单位</router-link></span>
     <span> <router-link to="/company/list">部门查看</router-link></span>
     <span> <router-link to="/department/dindex">添加部门</router-link></span>
@@ -10,7 +10,7 @@
   </div>
   <br>
     <form>
-      <table style=" margin: 0 auto;border-collapse:collapse;" border="1">
+      <table class="bianjitable" style="width:500px; margin: 0 auto;border-collapse:collapse;" border="1">
         <tr><td>名称</td><td><input type="text" :name="name" id="name" ></td></tr>
         <tr><td>描述</td><td><textarea :describe="describe" id="describe"></textarea></td></tr>
         <tr><td>单位代码</td><td><input type="text" :code="code" id="code"></td></tr>
@@ -22,20 +22,11 @@
         </select></td></tr>
         <tr><td>排序</td><td><input type="text" :order="order" id="order"></td></tr>
         <tr><td>父级PID</td><td>
-          <select name=""   :pid="pid" id="selclass">
-
-
-
-          </select>
-
-
+          <select name=""   :pid="pid" id="selclass"></select>
         </td></tr>
-
-        <tr><td></td><td><input type="button" @click="updatedo" value="更新"></td></tr>
-
+        <!--<tr><td></td><td><input class="bianjitable_but" type="button" @click="updatedo" value="更新"></td></tr>-->
       </table>
-
-
+      <input class="bianjitable_but" type="button" @click="updatedo" value="更新">
     </form>
   </div>
 </template>
@@ -178,5 +169,47 @@
 </script>
 
 <style scoped>
-
+  .cptop{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+  }
+  .cptop span{
+    margin-right: 20px;
+  }
+  .cptop span a{
+    line-height: 30px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .bianjitable td{
+    line-height: 40px;
+  }
+  .bianjitable input,.bianjitable textarea,.bianjitable select{
+    line-height: 40px;
+    height: 40px;
+    width: 100%;
+    margin: 0 auto;
+    border: none;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  .bianjitable textarea{
+    height: auto;
+  }
+  .bianjitable_but{
+    background-color: #579fe9;
+    color:#fff;
+    width:200px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    margin: 20px auto;
+    font-size: 16px;
+    cursor: pointer;
+  }
 </style>

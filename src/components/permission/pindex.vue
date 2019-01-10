@@ -4,11 +4,17 @@
 
     <div>
       <span> <router-link to="/permission/pindex">权限新增</router-link></span>
+      <span> <router-link to="/permission/pupdate">权限修改</router-link></span>
       <span> <router-link to="/permission/plist">权限列表</router-link></span>
       <span> <router-link to="/permission/prlist">查询角色下所有权限</router-link></span>
 
     </div>
     <br>
+    <form>
+
+      角色编号<input type="text" v-model="role_id">
+
+    </form>
     <div style="">
 
       <div style="width: 22%;float:left" >
@@ -68,7 +74,8 @@
         </table>
       </div>
     </div>
-
+    <div style="clear: both"></div>
+<div><input type="button" value="提交" @click="submit"></div>
   </div>
 </template>
 
@@ -89,6 +96,7 @@
       return{
 
         items:'',
+        role_id:'',
         btns:[],
         checked:false,
         checked1:false,
@@ -168,6 +176,32 @@
           _this.items=res.data;
           console.log(res);
 
+        })
+      },submit:function () {
+        var _this=this;
+        this.$axios.put(this.global.repathurl+'api/permission/index',{
+        role_id:this.role_id,
+          menu:this.menu,
+          sys:this.sys,
+          table:this.table,
+          btns:this.btns,
+
+
+        },{
+          headers:
+            {
+
+              'Content-Type':'application/json',
+              "Authorization": 'Bearer'+' '+token,
+            }
+        }).then(function (res) {
+
+          if(res.data.code=='1'){
+            alert('添加成功');
+            window.location.href=_this.global.pathurl+'permission/prlist'
+          }else{
+            alert('添加失败');
+          }
         })
       }
 

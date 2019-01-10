@@ -2,6 +2,7 @@
 <div>
   <div>
     <span> <router-link to="/permission/pindex">权限新增</router-link></span>
+    <span> <router-link to="/permission/pupdate">权限修改</router-link></span>
     <span> <router-link to="/permission/plist">权限列表</router-link></span>
     <span> <router-link to="/permission/prlist">查询角色下所有权限</router-link></span>
 
@@ -76,6 +77,10 @@
       </table>
     </div>
   </div>
+  <div style="clear: both"></div>
+  <div><router-link :to="{path:'/permission/pupdate',query:{id:permission_column_id,rid:role_id}}">修改</router-link>
+    <router-link :to="{path:'/permission/pdel',query:{id:permission_column_id,rid:role_id}}">删除</router-link>
+  </div>
 </div>
 </template>
 
@@ -95,6 +100,7 @@
       return{
         role_id:'',
         items:'',
+        permission_column_id:'',
       }
     },methods:{
       search:function () {
@@ -112,10 +118,22 @@
               "Authorization": 'Bearer'+' '+token,
             }
         }).then(function (res) {
-          var result=res.data[0].permission;
+          if(typeof(res.data[0])=='undefined'){
+            res.data[0]="";
+          }else{
 
-          _this.items=result;
-         // console.log(res.data[0].permission);
+
+
+
+
+
+            var result=res.data[0].permission;
+            _this.permission_column_id=res.data[0].permission_column_id;
+            _this.items=result;
+            _this.role_id=res.data[0].role_id;
+          }
+
+          //console.log(res);
 
         })
       }

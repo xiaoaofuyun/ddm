@@ -103,7 +103,9 @@
 
 </style>
 <script>
-
+  var cookie=require('vue-cookies');
+  var token=cookie.get('token');
+  console.log(token);
 
 //     import '../assets/js/jquery-1.8.3.min.js';
 //     $("#menu li").click(function () {
@@ -240,9 +242,9 @@ created: function () {
               if(data[i].pid == 0)
               {
 
-                  menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" ><a   class="navhit"  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
+                  menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList menuList_' + data[i].level + '" ><a   class="navhit"  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
               }else{
-                  menu_body += '<li style="position:relative;" id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
+                  menu_body += '<li style="position:relative;" id="' + data[i].tree_menu_id + '" class="menuList menuList_' + data[i].level + '" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
 
 
 
@@ -272,27 +274,22 @@ created: function () {
           //this.reload();
 
           // 处理菜单的隐藏和显示。
+        /*  $(".navhit").click(function () {
+               alert($(this).attr('href'))
+          })*/
+
           $(".menuList").click(function(){
 
-//              $('.menuList a').css('display','block')
-//              $('.menuList a').css('background','')
-//              $(this)[0].firstChild.style.background='red';
-           // console.log($(this)[0].id);
-          //  console.log($(this)[0].firstChild.href);
-            var key1=$(this)[0].id;
-            //console.log($('#rigpa').attr('src'));
-            $('#rigpa').attr('src',$(this)[0].firstChild.href)
-            //console.log($('#rigpa').attr('src'));
-            $('.menuList a').css('display','block')
-            $('.menuList a').css('background','')
-            $(this)[0].firstChild.style.background='red';
-         /*   var menuthis=$(this)[0];
-            menuthis.style.background='red';
 
-*/         $('.menuList').css('background','');
-          /*$(this).first().css('background','red');
-          console.log($(this).first())
-          $(this).find('li').css('background','');*/
+            var key1=$(this)[0].id;
+
+            $('#rigpa').attr('src',$(this)[0].firstChild.href)
+
+            $('.menuList a').css('display','block')
+          /*  $('.menuList a').css('background','')
+            $(this)[0].firstChild.style.background='red';*/
+          $('.menuList').css('background','');
+
             $(this).find("li").click(function(event) {
               return false;
             })
@@ -352,6 +349,9 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+mlcolor{
+  background-color: #cccccc;
 }
 /*li {*/
   /*display: inline-block;*/

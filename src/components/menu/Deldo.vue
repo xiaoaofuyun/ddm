@@ -1,5 +1,5 @@
 <template>
-<div>我是删除页</div>
+<div></div>
 </template>
 
 <script>

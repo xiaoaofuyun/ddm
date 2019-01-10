@@ -5,7 +5,7 @@
       <div class="addbox_div">
         <span><router-link to="/menu/Addo" >新增</router-link></span>
         <span class="on"><router-link to="/menu/update" >修改</router-link></span>
-        <span><router-link to="/menu/sel" >删除</router-link></span>
+
       </div>
     </div>
     <div id="tab1" style="width: 98%;margin: 20px auto"></div>

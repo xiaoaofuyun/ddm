@@ -15,7 +15,7 @@
         <tr><td>部门编号</td><td><input type="text" :department_id="department_id" id="department_id"></input></td></tr>
         <tr><td>用户名</td><td><input type="text" :username="username" id="username"></td></tr>
 
-        <tr><td>密码</td><td><input type="text" :password="password" id="password"> </td></tr>
+        <!--<tr><td>密码</td><td><input type="text" :password="password" id="password"> </td></tr>-->
         <tr><td>姓名</td><td><input type="text" :name="name" id="name"></td></tr>
         <tr><td>邮箱</td><td><input type="text" :email="email" id="email"></td></tr>
         <tr><td>排序</td><td><input type="text" :order="order" id="order"></td></tr>
@@ -41,7 +41,7 @@
         company_id:'',
         department_id:'',
         username:'',
-        password:'',
+        // password:'',
         email:'',
 
         order:''
@@ -74,7 +74,7 @@
               $('#department_id').val(res.data[i].department_id);
               $('#company_id').val(res.data[i].company_id);
               $('#username').val(res.data[i].username);
-              $('#password').val(res.data[i].password);
+              // $('#password').val(res.data[i].password);
               $('#email').val(res.data[i].email);
               $('#order').val(res.data[i].order);
 
@@ -100,7 +100,7 @@
           department_id:$('#department_id').val(),
           company_id:$('#company_id').val(),
           username:Base64.encode($('#username').val()),
-          password:Base64.encode($('#password').val()),
+          // password:Base64.encode($('#password').val()),
           email:$('#email').val(),
 
           order:$('#order').val(),

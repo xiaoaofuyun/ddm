@@ -1,15 +1,12 @@
 <template>
 <div>
   <div>
-    <span> <router-link to="/user/create">新增用户</router-link></span>
-    <span> <router-link to="/user/repwd">修改密码</router-link></span>
-    <span> <router-link to="/user/ulist">用户列表</router-link></span>
-    <span><router-link to="/user/udlist">部门用户列表</router-link></span>
-    <!--  <span><router-link to="/company/update">修改单位</router-link></span>
-      <span><router-link to="/company/del">删除单位</router-link></span>-->
+
+    <span> <router-link to="/role/rlist">角色查看</router-link></span>
+    <span> <router-link to="/role/rindex">添加角色</router-link></span>
+
   </div>
   <br>
-
 </div>
 </template>
 
@@ -19,7 +16,7 @@
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
   export default {
-    name: "udel",
+    name: "rdel",
     data(){
       return{
 
@@ -36,7 +33,7 @@
         var that=this;
         // that.$router.push(that.global.pathurl)
         console.log(2);
-        that.$axios.post(that.global.repathurl+'api/user/del',qs.stringify({user_id:nid}),{
+        that.$axios.post(that.global.repathurl+'api/role/del',qs.stringify({role_id:nid}),{
           headers:
             {
 
@@ -47,13 +44,13 @@
           if(res.data.code=='1'){
             alert('删除成功');
             //  that.$router.push(that.global.pathurl+'menu/update')
-            window.location.href=that.global.pathurl+'user/ulist'
+            window.location.href=that.global.pathurl+'role/rlist'
             //parent.parent.location.href=that.global.pathurl
             //location.reload();
           }else{
             alert('删除失败');
             //that.$router.push(that.global.pathurl+'menu/update')
-            window.location.href=that.global.pathurl+'user/ulist'
+            window.location.href=that.global.pathurl+'role/rlist'
           }
         })
       }

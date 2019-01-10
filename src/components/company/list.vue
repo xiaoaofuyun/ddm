@@ -20,10 +20,10 @@
 
   <table class="cptop_table" style=" margin: 0 auto;border-collapse:collapse;" border="1">
 
-  <th>单位编号</th>  <th>部门名称</th><th>操作</th>
+  <th>单位编号</th><th>部门编号</th>  <th>部门名称</th><th>操作</th>
     <tr  v-for="item in items">
       <td>{{item.company_id}}</td>
-
+      <td>{{item.department_id}}</td>
       <td>{{item.name}}</td>
       <td>
 

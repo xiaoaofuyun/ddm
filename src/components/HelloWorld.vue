@@ -36,13 +36,13 @@
         <div id='menu1'></div>
         <li><a :href="pathurl+'navlist/test'" target="rightdis">test测试</a></li>
         <li><a :href="pathurl+'company/cpindex'" target="rightdis">企业单位管理</a></li>
-<<<<<<< HEAD
+
         <li><a :href="pathurl+'user/ulist'"  target="rightdis">用户管理</a></li>
-=======
-        <li><a :href="pathurl+'user/ulist'" target="rightdis">用户管理</a></li>
+
+
         <li><a :href="pathurl+'role/rlist'" target="rightdis">角色管理</a></li>
         <li><a :href="pathurl+'permission/plist'" target="rightdis">权限管理</a></li>
->>>>>>> b07c1cdae3a3b7f8e40d8039ba629cc5f3424cb9
+
       </ul>
     </div>
 
@@ -239,17 +239,14 @@ created: function () {
               // 一级菜单，默认显示。
               if(data[i].pid == 0)
               {
-<<<<<<< HEAD
+
                   menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" ><a   class="navhit"  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
               }else{
                   menu_body += '<li style="position:relative;" id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
 
-=======
 
-                menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" ><a   class="navhit"  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</a>';
-              }else{
-                menu_body += '<li style="position:relative;" id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</a>';
->>>>>>> b07c1cdae3a3b7f8e40d8039ba629cc5f3424cb9
+
+            
               }
 
 

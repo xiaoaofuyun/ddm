@@ -36,10 +36,20 @@
         <div id='menu1'></div>
         <li><a :href="pathurl+'navlist/test'" target="rightdis">test测试</a></li>
         <li><a :href="pathurl+'company/cpindex'" target="rightdis">企业单位管理</a></li>
+<<<<<<< HEAD
           <!--<li><a :href="pathurl+'user/ulist'"  target="rightdis">用户管理</a></li>-->
         <li><a :href="pathurl+'user/ulist'" target="rightdis">用户管理</a></li>
         <li><a :href="pathurl+'role/rlist'" target="rightdis">角色管理</a></li>
         <li><a :href="pathurl+'permission/plist'" target="rightdis">权限管理</a></li>
+=======
+
+        <li><a :href="pathurl+'user/ulist'"  target="rightdis">用户管理</a></li>
+
+
+        <li><a :href="pathurl+'role/rlist'" target="rightdis">角色管理</a></li>
+        <li><a :href="pathurl+'permission/plist'" target="rightdis">权限管理</a></li>
+
+>>>>>>> a3fb21d273d39a39fc1d1aa1ee91976d4e07eda6
       </ul>
     </div>
 
@@ -242,6 +252,11 @@ created: function () {
                   menu_body += '<li style="position:relative;" id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a3fb21d273d39a39fc1d1aa1ee91976d4e07eda6
               }
 
 

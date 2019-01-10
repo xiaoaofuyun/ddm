@@ -33,6 +33,7 @@
   import $ from 'jquery'
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
+  console.log(token);
   export default {
     name: "create",
     data(){
@@ -57,7 +58,7 @@
           name:this.name,
           company_id:this.company_id,
           department_id:this.department_id,
-          username:this.username,
+          username:Base64.encode(this.username),
           password:Base64.encode(this.password),
           email:this.email,
 

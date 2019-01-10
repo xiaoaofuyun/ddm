@@ -12,7 +12,7 @@
   <br>
   <form >
 
-    单位编号ID <input type="text" v-model="department_id">
+    部门编号ID <input type="text" v-model="department_id">
 
     <button @click="csel()" >搜索</button>
   </form>

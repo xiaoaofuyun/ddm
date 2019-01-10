@@ -4,6 +4,8 @@
 
     <span> <router-link to="/role/rlist">角色查看</router-link></span>
     <span> <router-link to="/role/rindex">添加角色</router-link></span>
+    <span> <router-link to="/role/listur">查询角色关联的用户</router-link></span>
+    <span> <router-link to="/role/createur">角色用户关联</router-link></span>
 
   </div>
   <br>

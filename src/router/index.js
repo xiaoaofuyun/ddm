@@ -39,6 +39,8 @@ import rdel from '@/components/role/rdel'
 import rindex from '@/components/role/rindex'
 import rlist from '@/components/role/rlist'
 import rupdate from '@/components/role/rupdate'
+import createur from '@/components/role/createur'
+import listur from '@/components/role/listur'
 import pdel from '@/components/permission/pdel'
 import pindex from '@/components/permission/pindex'
 import plist from '@/components/permission/plist'
@@ -217,6 +219,16 @@ export default new Router({
       path: '/role/rupdate',
       name: 'rupdate',
       component: rupdate
+    }
+    ,{
+      path: '/role/createur',
+      name: 'createur',
+      component: createur
+    }
+    ,{
+      path: '/role/listur',
+      name: 'listur',
+      component: listur
     },{
       path: '/permission/pupdate',
       name: 'pupdate',

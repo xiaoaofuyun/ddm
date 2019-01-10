@@ -63,7 +63,7 @@
               "Authorization": 'Bearer'+' '+token,
             }
         }).then(function (res) {
-          // console.log(res.data.result.length);
+          console.log(res);
 
           for ( var i = 0; i <res.data.length; i++){
             if(res.data[i].user_id==nid){
@@ -99,7 +99,7 @@
           name: $('#name').val(),
           department_id:$('#department_id').val(),
           company_id:$('#company_id').val(),
-          username:$('#username').val(),
+          username:Base64.encode($('#username').val()),
           password:Base64.encode($('#password').val()),
           email:$('#email').val(),
 

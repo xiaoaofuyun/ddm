@@ -252,11 +252,6 @@ created: function () {
                   menu_body += '<li style="position:relative;" id="' + data[i].tree_menu_id + '" class="menuList_' + data[i].level + '" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> a3fb21d273d39a39fc1d1aa1ee91976d4e07eda6
               }
 
 

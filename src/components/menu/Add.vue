@@ -9,7 +9,7 @@
       </div>
 
   </div>
-  <iframe src="http://localhost:8083/#/menu/Addo" frameborder="0" name="rightbot" style="height: 800px;width: 100%;border: 1px solid lightgrey"></iframe>
+  <iframe :src="pathurl+'menu/Addo'" frameborder="0" name="rightbot" style="height: 800px;width: 100%;border: 1px solid lightgrey"></iframe>
 </div>
 </template>
 
@@ -18,7 +18,8 @@
         name: "Add",
         data(){
           return{
-            msg:'aaaaaaaaaaaaaaaaaa'
+            msg:'aaaaaaaaaaaaaaaaaa',
+            pathurl:this.global.pathurl
           }
         }
     }

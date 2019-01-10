@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <div>
+  <div class="cptop">
     <span> <router-link to="/user/create">新增用户</router-link></span>
     <span> <router-link to="/user/repwd">修改密码</router-link></span>
     <span> <router-link to="/user/ulist">用户列表</router-link></span>
@@ -12,11 +12,14 @@
   <br>
   <form >
 
-    部门编号ID <input type="text" v-model="department_id">
+    <div class="pindex_top">
+      <h2>部门编号ID</h2><input type="text" v-model="department_id"><button @click="csel()" >搜索</button>
+    </div>
+    <!--部门编号ID <input type="text" v-model="department_id">-->
 
-    <button @click="csel()" >搜索</button>
+    <!--<button @click="csel()" >搜索</button>-->
   </form>
-  <table style=" margin: 0 auto;border-collapse:collapse;" border="1">
+  <table class="yhtable" style=" width: 98%; margin: 20px auto;border-collapse:collapse;" border="1">
 
     <th>用户编号</th>  <th>公司组编号</th><th>姓名</th><th>用户名</th><th>邮箱</th><th>操作</th>
     <tr  v-for="item in items">
@@ -76,5 +79,62 @@
 </script>
 
 <style scoped>
-
+  .cptop{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+  }
+  .cptop span{
+    margin-right: 20px;
+  }
+  .cptop span a{
+    line-height: 30px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .yhtable{
+    margin-bottom: 40px;
+  }
+  .yhtable th{
+    line-height: 40px;
+    background-color: #f7f7f7;
+  }
+  .yhtable td{
+    line-height: 40px;
+  }
+  .pindex_top{
+    width: 98%;
+    margin: 20px auto;
+    font-size: 0;
+    text-align: left;
+  }
+  .pindex_top h2{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    color:#333;
+    line-height: 30px;
+  }
+  .pindex_top input{
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 0 15px;
+  }
+  .pindex_top button{
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    /*margin: 0 15px;*/
+  }
 </style>

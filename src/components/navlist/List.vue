@@ -19,7 +19,7 @@
 
       <span id="spanid">菜单导航ID:{{ids}}</span>
 
-      <iframe id="framestate"    width="100%;"  src="http://localhost:8083/#/navlist/tableadd" frameborder="0" :data_id="ids" name="tablelist" >
+      <iframe id="framestate"    width="100%;"  src="http://localhost:8084/#/navlist/tableadd" frameborder="0" :data_id="ids" name="tablelist" >
 
       </iframe>
       <!--<div style="height: 750px;width: 100%;background-color: #00ee00"></div>-->

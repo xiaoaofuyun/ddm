@@ -9,7 +9,7 @@
       </div>
 
   </div>
-  <iframe src="http://localhost:8083/#/menu/Addo" frameborder="0" name="rightbot" style="height: 800px;width: 100%;border: 1px solid lightgrey"></iframe>
+  <iframe src="http://localhost:8084/#/menu/Addo" frameborder="0" name="rightbot" style="height: 800px;width: 100%;border: 1px solid lightgrey"></iframe>
 </div>
 </template>
 

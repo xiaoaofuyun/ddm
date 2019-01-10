@@ -4,7 +4,7 @@
 
 <script>
 const repathurl='http://192.168.0.46:8777/'
-  const pathurl='http://localhost:8083/#/'
+  const pathurl='http://localhost:8084/#/'
     export default {
         name: "Global",
        pathurl,

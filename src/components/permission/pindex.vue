@@ -130,7 +130,7 @@
   import $ from 'jquery'
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
-  console.log(token);
+  //console.log(token);
   export default {
     name: "pindex",
     mounted:function () {
@@ -154,6 +154,7 @@
         sys:[],
         ritems:'',
         citems:'',
+        company_id:''
       }
     },methods:{
       csel:function () {

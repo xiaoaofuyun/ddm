@@ -29,8 +29,10 @@ let date = require('dateformat');
 Vue.use(elementui);
 Vue.use(easyui);
 window.Vue = Vue;
-
-
+//axios.defaults.baseURL="/api";
+//axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+//axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+//axios.defaults.headers['Access-Control-Allow-Headers'] = 'access-control-allow-headers,access-control-allow-origin,authorization';
 
 
 

@@ -1,6 +1,7 @@
 
 <template>
   <div class="hello">
+
     <div class="index_top">
       <div class=" top-left"><img src="../assets/images/top_logo.png" alt=""></div>
     </div>
@@ -38,8 +39,18 @@
         <li><a :href="pathurl+'company/cpindex'" target="rightdis">企业单位管理</a></li>
         <li><a :href="pathurl+'user/ulist'" target="rightdis">用户管理</a></li>
         <li><a :href="pathurl+'role/rlist'" target="rightdis">角色管理</a></li>
-        <li><a :href="pathurl+'permission/plist'" target="rightdis">权限管理
-        </a></li>
+
+
+
+
+
+        <li>
+          <a :href="pathurl+'permission/plist'" target="rightdis">权限管理</a>
+          <!--<a :href="pathurl+'permission/plist'" target="rightdis" v-for="pri in Privilege.sys"   v-if="pri.uri=='api/permission/index' || pri.uri=='api/permission/rlist'">权限管理</a>-->
+          <!--<a :href="pathurl+'permission/plist'" target="rightdis" v-for="pri in Privilege.sys"   v-if="pri.uri!='api/permission/index' && pri.uri=='api/permission/rlist'">权限管理</a>-->
+
+          <!--<a :href="pathurl+'permission/plist'" target="rightdis" v-for="pri in Privilege.sys"   v-if="pri.uri=='api/permission/index' && pri.uri=='api/permission/rlist'">权限管理</a>-->
+        </li>
 
 
 
@@ -49,7 +60,7 @@
     <div class="right">
 
 
-      <iframe id="rigpa" :src="pathurl+'menu/add'" frameborder="0" name="rightdis" ></iframe>
+      <iframe id="rigpa" data_id="" :src="pathurl+'menu/add'" frameborder="0" name="rightdis" ></iframe>
     </div>
     <div class="footer"><h2>Copyright ©2013-2018 越中档案管理 </h2></div>
 
@@ -140,19 +151,42 @@ var qs = require('qs');
 export default {
   name: 'HelloWorld',
   inject:['reload'],
+
   data () {
     return {
       msg: '11111',
       pathurl:this.global.pathurl,
 
+      Privilege:'',
+
+
     }
   },
 created: function () {
 
-  this.getMenu()
+  this.getMenu();
+ this.authority();
+
 
 },
   methods:{
+    authority:function () {
+      var _this=this;
+      this.$axios.post(_this.global.repathurl+'api/permission/list',{},{
+        headers:
+          {
+
+           // 'Access-Control-Allow-Origin':'http://119.10.29.119:8777/',
+            'Content-Type':'application/x-www-form-urlencoded',
+            "Authorization": 'Bearer'+' '+token,
+
+          }
+      }).then(function (res) {
+        _this.Privilege=res.data;
+
+
+      })
+    },
     add:function () {
        this.$axios.post(this.global.repathurl+'api/menu/index ',qs.stringify({
          name:'文学',
@@ -172,17 +206,19 @@ created: function () {
        })
     },list(){
       this.$axios.post(this.global.repathurl+'api/menu/list',{},{
+
         headers:
       {
 
         'Content-Type':'application/x-www-form-urlencoded',
         "Authorization": 'Bearer'+' '+token,
+
       }
       }).then(function (response) {
 
 
 
-       // console.log(response);
+        console.log(response);
 
       }).catch(function (err) {
         console.log(err);
@@ -205,9 +241,10 @@ created: function () {
 
             'Content-Type':'application/x-www-form-urlencoded',
             "Authorization": 'Bearer'+' '+token,
+
           }
       }).then(function (response) {
-
+        //console.log(response.headers);
         _this.menuData = response.data
         // const blob = new Blob([_this.menuData], {type: ''})
         // FileSaver.saveAs(blob, 'hahaha.json')
@@ -240,18 +277,12 @@ created: function () {
           // 树形数据转化为ul li格式
           function createMenu(data) {
             var menu_body = '<ul>';
-            var timestamp1 = Date.parse(new Date());
+           // var timestamp1 = Date.parse(new Date());
             for(var i = 0; i < data.length; i++){
               // 一级菜单，默认显示。
-              if(data[i].pid == 0)
-              {
 
                   menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList menuList_' + data[i].level + '" ><a   class="navhit"  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
-              }else{
-                  menu_body += '<li style="position:relative;" id="' + data[i].tree_menu_id + '" class="menuList menuList_' + data[i].level + '" style="display:none;"><a  class="havhit" href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
 
-
-              }
 
 
 
@@ -268,51 +299,13 @@ created: function () {
           // 菜单初始化。
           var tree;
           tree = toTree(arr, 0,0);
-           console.log(tree);
+          // console.log(tree);
 
           var menu_body = createMenu(tree);
           $("#menu1").empty();
           $("#menu1").append(menu_body);
           //this.reload();
 
-          // 处理菜单的隐藏和显示。
-        /*  $(".navhit").click(function () {
-               alert($(this).attr('href'))
-          })*/
-
-          $(".menuList").click(function(){
-
-
-            var key1=$(this)[0].id;
-
-            $('#rigpa').attr('src',$(this)[0].firstChild.href)
-
-            $('.menuList a').css('display','block')
-          /*  $('.menuList a').css('background','')
-            $(this)[0].firstChild.style.background='red';*/
-          $('.menuList').css('background','');
-
-            $(this).find("li").click(function(event) {
-              return false;
-            })
-
-            if($(this).hasClass("shows")) {
-              $(this).removeClass("shows");
-              $(this).find("li").find("ul").removeClass("shows");
-              $(this).find("li").hide();
-            } else {
-              $(this).addClass("shows");
-
-              $(this).find("li").show();
-              $(this).find("li").find("ul").find("li").hide();
-              $(this).show();
-            }
-          });
-          /*$('.navhit').each(function () {
-             $(this).click(function () {
-                alert($(this).attr('href'));
-             })
-          })*/
 
         });
 

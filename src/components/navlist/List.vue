@@ -3,14 +3,28 @@
   <div style="width: 100%;height: 50px ;border-bottom: 2px solid #579fe9">
       <div style="float: right;">
         <ul class="listul">
-          <li><router-link to="/navlist/tableadd"  >新建表</router-link></li>
-          <li><router-link to="/navlist/tableup"   >修改</router-link></li>
-          <li><router-link to="/navlist/tabledel" >删除 </router-link></li>
-          <li><router-link to="/navlist/tablesel"  >查询 </router-link></li>
-          <li><router-link to="/tfield/index"  >新建表字段</router-link></li>
-          <li><router-link to="/tfield/del"   >删除表字段</router-link></li>
-          <li><router-link to="/tfield/list" >查看表字段</router-link></li>
-          <li><router-link to="/tfield/dtype"  >查询数据类型 </router-link></li>
+          <li>
+            <router-link :to="{path:'/navlist/tableadd',query:{id:ids}}">新建表</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/navlist/tableup',query:{id:ids}}">修改</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/navlist/tabledel',query:{id:ids}}">删除</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/navlist/tablesel',query:{id:ids}}">查询</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/tfield/index',query:{id:ids}}">新建表字段</router-link>
+          </li>
+          <!--<li><router-link to="/tfield/del"   >删除表字段</router-link></li>-->
+          <li>
+            <router-link :to="{path:'/tfield/list',query:{id:ids}}">查看表字段</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/tfield/dtype',query:{id:ids}}">查询数据类型</router-link>
+          </li>
         </ul>
       </div>
   </div>

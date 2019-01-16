@@ -105,7 +105,7 @@
   import $ from 'jquery'
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
-  console.log(token);
+  //console.log(token);
   export default {
     name: "plist",
     mounted:function () {
@@ -135,7 +135,7 @@
             }
         }).then(function (res) {
           _this.items=res.data;
-          console.log(res);
+         // console.log(res);
 
         })
       }

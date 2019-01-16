@@ -3,10 +3,10 @@
 </template>
 
 <script>
-const repathurl='http://192.168.0.46:8777/'
+const repathurl="http://test01.com:9003/";
 
 
-  const pathurl='http://localhost:8083/#/'
+  const pathurl='http://localhost:8083/#/';
 
     export default {
         name: "Global",
@@ -14,7 +14,7 @@ const repathurl='http://192.168.0.46:8777/'
       repathurl,
       data(){
           return{
-            
+
           }
       },methods:{
 

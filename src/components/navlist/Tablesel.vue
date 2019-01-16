@@ -1,9 +1,38 @@
 <template>
   <div>
+    <div style="width: 100%;height: 50px ;border-bottom: 2px solid #579fe9">
+      <div style="float: right;">
+        <ul class="listul">
+          <li>
+            <router-link :to="{path:'/navlist/tableadd',query:{id:ids}}">新建表</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/navlist/tableup',query:{id:ids}}">修改</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/navlist/tabledel',query:{id:ids}}">删除</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/navlist/tablesel',query:{id:ids}}">查询</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/tfield/index',query:{id:ids}}">新建表字段</router-link>
+          </li>
+          <!--<li><router-link to="/tfield/del"   >删除表字段</router-link></li>-->
+          <li>
+            <router-link :to="{path:'/tfield/list',query:{id:ids}}">查看表字段</router-link>
+          </li>
+          <li>
+            <router-link :to="{path:'/tfield/dtype',query:{id:ids}}">查询数据类型</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="tableaddbox">
+
       <form >
 
-        <h2 class="tableaddbox_h2">菜单导航ID</h2> <input type="text" :value="menu_id">
+        <h2 class="tableaddbox_h2">菜单导航ID</h2> <input type="text" :value="ids" disabled>
 
         <button class="tableaddbox_but" @click="submit()" >搜索</button>
       </form>
@@ -38,9 +67,9 @@
     data(){
       return{
 
-        menu_id:'11',
+        menu_id:'',
         items:'',
-
+        ids:this.$route.query.id,
 
       }
     },
@@ -49,7 +78,7 @@
         var _this=this;
         this.$axios.post(_this.global.repathurl+'api/mtable/info',qs.stringify({
 
-          menu_id:_this.menu_id,
+          menu_id:_this.ids,
 
         }),{
           headers:
@@ -112,5 +141,13 @@
     font-size: 18px;
     line-height: 40px;
     text-align: center;
+  }ul>li {
+     float:left;
+     margin:5px;
+   }
+  .listul a{
+    text-decoration: none;
+    color:#333;
+    line-height: 40px;
   }
 </style>

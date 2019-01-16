@@ -29,6 +29,7 @@
 
 </style>
 <script>
+
   // var crypto = require('crypto');
   // var sha1 = crypto.createHash('sha1');//定义加密方式:md5不可逆,此处的md5可以换成任意hash加密的方法名称；
 
@@ -90,10 +91,11 @@
                 this.$axios.post(_this.global.repathurl+'api/login  ', qs.stringify({
                   username:  Base64.encode(this.username),
                   password:  Base64.encode(this.password),
-                  sign:setSha(  Base64.encode(this.username)+  Base64.encode(this.password)+getDate()+"xb")
+                  sign:setSha(Base64.encode(this.username)+  Base64.encode(this.password)+getDate()+"xb")
                 }),{
                   headers:{
-                    'Content-Type':'application/x-www-form-urlencoded'
+                    'Content-Type':'application/x-www-form-urlencoded',
+
                   }
                 },
                   {
@@ -108,13 +110,13 @@
                     ]
                   }).then(function (response) {
 
-                      console.log(response.data.code);
-                      console.log(_this);
+                      //console.log(response.data.code);
+                      //console.log(_this);
 
                     if(response.data.code=='1'){
                      cookie.set("token",response.data.api_token);
                       //console.log(cookie.get('token'));
-                      console.log(response.data);
+                     // console.log(response.data);
                       alert('登录成功');
                       sessionStorage.loginname = 'loginname';
                       //_this.$router.push('/');

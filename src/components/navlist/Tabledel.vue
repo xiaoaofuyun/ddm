@@ -97,7 +97,13 @@
               "Authorization": 'Bearer'+' '+token,
             }
         }).then(function (res) {
-          console.log(res);
+          //console.log(res);
+          if(res.data.code=='1'){
+            alert('删除成功');
+            window.location.href=_this.global.pathurl+'navlist/tablesel?id='+_this.ids;
+          }else{
+            alert('删除失败');
+          }
 
         })
       }

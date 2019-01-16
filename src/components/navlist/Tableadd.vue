@@ -83,7 +83,7 @@ var token=cookie.get('token');
                // console.log(res);
               if(res.data.code=='1'){
                 alert('添加数据表成功');
-                window.location.href=_this.global.pathurl+'navlist/tablesel';
+                window.location.href=_this.global.pathurl+'navlist/tablesel?id='+_this.ids;
               }
 
             })

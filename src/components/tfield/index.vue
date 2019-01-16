@@ -179,6 +179,7 @@
            })
          },
           submit:function () {
+           var that=this;
                var json=[{
                  menu_table_id:this.menu_table_id,
                  field_name:this.field_name,
@@ -206,12 +207,12 @@
                  if(res.data.code=='1'){
                    alert('添加成功');
 
-                   window.location.href=that.global.pathurl+'tfield/list'
+                   window.location.href=that.global.pathurl+'tfield/list?id='+that.ids;
 
                  }else{
                    alert('添加失败');
 
-                   window.location.href=that.global.pathurl+'tfield/list'
+                   window.location.href=that.global.pathurl+'tfield/list?id='+that.ids;
                  }
                }).catch(function (err) {
                  console.log(err)

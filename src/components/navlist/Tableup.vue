@@ -136,7 +136,12 @@
               "Authorization": 'Bearer'+' '+token,
             }
         }).then(function (res) {
-          console.log(res);
+          if(res.data.code=='1'){
+            alert('修改成功');
+            window.location.href=_this.global.pathurl+'navlist/tablesel?id='+_this.ids;
+          }else{
+            alert('修改失败');
+          }
 
         })
       }

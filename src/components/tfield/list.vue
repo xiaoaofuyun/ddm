@@ -52,7 +52,7 @@
         <td>{{item.data_type}}</td>
         <td>{{item.parameter_type}}</td>
         <td>
-          <router-link :to="{path:'/tfield/del',query:{tid:item.menu_table_id,fid:item.table_field_id}}">
+          <router-link :to="{path:'/tfield/del',query:{tid:item.menu_table_id,fid:item.table_field_id,id:ids}}">
             删除
           </router-link></td>
       </tr>

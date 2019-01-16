@@ -48,7 +48,7 @@
       <tr  v-for="item in items">
         <td>{{item.menu_id}}</td>
         <td>{{item.menu_table_id}}</td>
-        <td>{{item.table_name}}</td>
+        <td>{{item.show_name}}</td>
       </tr>
 
     </table>
@@ -89,7 +89,7 @@
             }
         }).then(function (res) {
           _this.items=res.data;
-          console.log(res);
+         // console.log(res);
 
         })
       }

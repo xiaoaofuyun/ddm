@@ -51,7 +51,7 @@
 
       deldo:function () {
         var nid=this.$route.query.fid;
-        console.log(nid);
+        //console.log(nid);
         var that=this;
         // that.$router.push(that.global.pathurl)
         //console.log(2);
@@ -66,13 +66,13 @@
           if(res.data.code=='1'){
             alert('删除成功');
             //  that.$router.push(that.global.pathurl+'menu/update')
-            window.location.href=that.global.pathurl+'tfield/list'
+            window.location.href=that.global.pathurl+'tfield/list?id='+that.ids;
             //parent.parent.location.href=that.global.pathurl
             //location.reload();
           }else{
             alert('删除失败');
             //that.$router.push(that.global.pathurl+'menu/update')
-            window.location.href=that.global.pathurl+'tfield/list'
+            window.location.href=that.global.pathurl+'tfield/list?id='+that.ids;
           }
         })
       }

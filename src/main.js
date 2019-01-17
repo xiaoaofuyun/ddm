@@ -15,12 +15,16 @@ import 'vx-easyui/dist/themes/default/easyui.css';
 import 'vx-easyui/dist/themes/icon.css';
 import 'vx-easyui/dist/themes/vue.css';
 import easyui from 'vx-easyui';
+import 'babel-polyfill'
+// import promise from 'es6-promise';
+// promise.polyfill();
+import 'es6-promise/auto'
 Vue.use(easyui);
+Vue.config.debug = true;
 
-
-Vue.config.productionTip = false
-Vue.prototype.global = global_
-Vue.use(VueCookies)
+Vue.config.productionTip = false;
+Vue.prototype.global = global_;
+Vue.use(VueCookies);
 Vue.prototype.$qs = qs;
 Vue.prototype.$axios = axios;
 let Base64 = require('js-base64').Base64;

@@ -1,36 +1,36 @@
 <template>
-<div>
-  <div class="cptop">
+  <div>
+    <div class="cptop">
 
-    <span> <router-link to="/role/rlist">角色查看</router-link></span>
-    <span> <router-link to="/role/rindex">添加角色</router-link></span>
-    <span> <router-link to="/role/listur">查询角色关联的用户</router-link></span>
-    <span> <router-link to="/role/createur">角色用户关联</router-link></span>
+      <span> <router-link to="/role/rlist">角色查看</router-link></span>
+      <span> <router-link to="/role/rindex">添加角色</router-link></span>
+      <span> <router-link to="/role/listur">查询角色关联的用户</router-link></span>
+      <span> <router-link to="/role/createur">角色用户关联</router-link></span>
 
+    </div>
+    <br>
+    <form>
+      <table class="bianjitable" style="width: 500px; margin: 0 auto;border-collapse:collapse;" border="1">
+
+        <tr><td>角色名称</td><td><input type="text" v-model="name"></td></tr>
+        <tr><td>角色描述</td><td><textarea cols="30" rows="10" v-model="describe"></textarea></td></tr>
+        <tr><td>单位编号</td><td>
+
+          <select  v-model="company_id" >
+            <option v-for="item in citems" :value="item.company_id">
+              {{item.name}}
+            </option>
+
+          </select>
+
+        </td></tr>
+
+      </table>
+      <input class="bianjitable_but" type="button" value="提交" @click="rolesubmit">
+
+
+    </form>
   </div>
-  <br>
-  <form>
-    <table class="bianjitable" style="width: 500px; margin: 0 auto;border-collapse:collapse;" border="1">
-
-    <tr><td>角色名称</td><td><input type="text" v-model="name"></td></tr>
-      <tr><td>角色描述</td><td><textarea name="" id="" cols="30" rows="10" v-model="describe"></textarea></td></tr>
-      <tr><td>单位编号</td><td>
-
-        <select name="" v-model="company_id" >
-          <option v-for="item in citems" :value="item.company_id">
-            {{item.name}}
-          </option>
-
-        </select>
-
-      </td></tr>
-      <!--<tr><td colspan="2"><input type="button" value="提交" @click="rolesubmit"></td></tr>-->
-    </table>
-    <input class="bianjitable_but" type="button" value="提交" @click="rolesubmit">
-
-
-  </form>
-</div>
 </template>
 
 <script>

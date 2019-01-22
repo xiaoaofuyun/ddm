@@ -1,7 +1,6 @@
 <template>
         <div>
-
-            <div class="cptop">
+          <div class="cptop">
                <span> <router-link to="/company/cpindex">所有单位</router-link></span>
                <span> <router-link to="/company/list">部门查看</router-link></span>
               <span> <router-link to="/department/dindex">添加部门</router-link></span>
@@ -12,13 +11,11 @@
           <br>
 
           <div class="cptop_div">
-            <table style=" margin: 0 auto;border-collapse:collapse;" border="1">
-
-              <th>单位编号</th>  <th>单位名称</th><th>操作</th>
+            <table style="border-collapse:collapse;" border="1">
+                <th>单位编号</th>  <th>单位名称</th><th>操作</th>
               <tr  v-for="item in items">
                 <td>{{item.company_id}}</td>
-
-                <td>{{item.name}}</td>
+                  <td>{{item.name}}</td>
                 <td><router-link :to="{path:'/company/list',query:{id:item.company_id}}">查看</router-link>
                   <router-link :to="{path:'/company/update',query:{id:item.company_id}}">编辑</router-link>
                   <router-link :to="{path:'/company/del',query:{id:item.company_id}}">删除</router-link></td>
@@ -38,8 +35,7 @@
     name: "cpindex",
     mounted:function () {
        this.csel()
-    },
-    data(){
+    },data(){
       return{
         company_id:'',
         items:'',
@@ -70,13 +66,12 @@
 
 <style scoped>
 .cptop{
-    width: 100%;
     height: 50px;
     background-color: #fff;
     border-bottom: 1px solid #ccc;
     text-align: right;
 }
-    .cptop span{
+.cptop span{
         margin-right: 20px;
     }
 .cptop span a{
@@ -86,7 +81,7 @@
     text-decoration: none;
     display: inline-block;
 }
-    .cptop_div{
+.cptop_div{
         width: 98%;
         margin: 0 auto;
     }

@@ -14,7 +14,7 @@
 
       <h2>单位</h2>
 
-      <select name="" v-model="company_id"  style="width: 370px;height: 40px;">
+      <select  v-model="company_id"  style="width:370px;height:40px;">
         <option v-for="item in citems" :value="item.company_id">
           {{item.name}}
         </option>
@@ -26,7 +26,7 @@
     </form>
   </div>
 
-  <table class="cptop_table" style=" margin: 0 auto;border-collapse:collapse;" border="1">
+  <table class="cptop_table" style="border-collapse:collapse;" border="1">
 
   <th>单位编号</th><th>部门编号</th>  <th>部门名称</th><th>操作</th>
     <tr  v-for="item in items">
@@ -49,14 +49,13 @@
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
     export default {
-        name: "list",
+        name:"list",
       mounted:function () {
        this.compsel();
         this.departmentshow();
       },
-
-    data(){
-          return{
+   data(){
+     return{
                company_id:'',
             items:'',
             citems:'',
@@ -126,7 +125,6 @@
 
 <style scoped>
   .cptop{
-    width: 100%;
     height: 50px;
     background-color: #fff;
     border-bottom: 1px solid #ccc;

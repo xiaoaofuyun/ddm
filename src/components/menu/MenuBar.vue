@@ -1,8 +1,5 @@
 <template>
-
-<div class="menu-Bar">
-  <!--<div v-bind:menuData="menuData"></div>-->
- <!--{{menuData}}-->
+  <div>
   <template v-for="value in this.menuData">
 
 
@@ -16,9 +13,7 @@
 
 <script>
   import FileSaver from 'file-saver'
-
   import $ from 'jquery'
-
   import MenuTree from '@/components/menu/MenuTree'
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
@@ -31,7 +26,7 @@
 
         }
       },
-      created: function () {
+      created:function () {
         this.getMenu()
       },
       methods:{
@@ -124,12 +119,7 @@
               });
 
             });
-
-
-
-
-
-            console.log(response+1111);
+           // console.log(response+1111);
 
           }).catch(function (err) {
             console.log(err)
@@ -141,10 +131,9 @@
       }
     }
 </script>
-
 <style scoped>
-  .menu-Bar:not(.el-menu--collapse) {
+/*  .menu-Bar:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
-  }
+  }*/
 </style>

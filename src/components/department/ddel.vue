@@ -1,5 +1,4 @@
-<template>
-<div>
+<template><div>
   <div>
     <span> <router-link to="/company/cpindex">所有单位</router-link></span>
     <span> <router-link to="/company/list">部门查看</router-link></span>
@@ -13,15 +12,13 @@
 
 </div>
 </template>
-
 <script>
   var qs = require('qs');
   import $ from 'jquery'
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
   export default {
-    name: "ddel",
-    data(){
+    name: "ddel",data(){
       return{
 
       }
@@ -30,13 +27,9 @@
       this.deldo();
     },
     methods: {
-
       deldo:function () {
         var did=this.$route.query.did;
-        console.log(did);
         var that=this;
-        // that.$router.push(that.global.pathurl)
-        console.log(2);
         that.$axios.post(that.global.repathurl+'api/department/del',qs.stringify({department_id:did}),{
           headers:
             {
@@ -63,7 +56,6 @@
 
   }
 </script>
-
 <style scoped>
 
 </style>

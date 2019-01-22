@@ -46,6 +46,8 @@ import pindex from '@/components/permission/pindex'
 import plist from '@/components/permission/plist'
 import prlist from '@/components/permission/prlist'
 import pupdate from '@/components/permission/pupdate'
+import tlist from '@/components/tabledate/list'
+import tindex from '@/components/tabledate/index'
 Vue.use(Router)
 
 export default new Router({
@@ -249,6 +251,14 @@ export default new Router({
       path: '/permission/pindex',
       name: 'pindex',
       component: pindex
+    },{
+      path: '/tabledate/list',
+      name: 'tlist',
+      component: tlist
+    },{
+      path: '/tabledate/index',
+      name: 'tindex',
+      component: tindex
     }
   ]
 })

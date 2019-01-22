@@ -17,7 +17,7 @@
 
     <div class="pindex_top">
       <h2>单位</h2>
-      <select name="" v-model="company_id" style="margin-left:10px;height: 28px;width: 250px;" >
+      <select name="" v-model="company_id" style="margin-left:10px;height:28px;width:250px;" >
         <option v-for="item in citems" :value="item.company_id">
           {{item.name}}
         </option>
@@ -114,7 +114,6 @@
 
 <style scoped>
   .cptop{
-    width: 100%;
     height: 50px;
     background-color: #fff;
     border-bottom: 1px solid #ccc;

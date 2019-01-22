@@ -35,7 +35,7 @@
         <li  ><a href="http://localhost:8082/#/menu/del" target="rightdis">权限管理</a></li>-->
         <li  ><a :href="pathurl+'menu/add'" target="rightdis" @click="menushow">菜单导航</a></li>
         <div id='menu1'></div>
-        <li><a :href="pathurl+'navlist/test'" target="rightdis">test测试</a></li>
+        <!--<li><a :href="pathurl+'navlist/test'" target="rightdis">用户操作</a></li>-->
         <li><a :href="pathurl+'company/cpindex'" target="rightdis">企业单位管理</a></li>
         <li><a :href="pathurl+'user/ulist'" target="rightdis">用户管理</a></li>
         <li><a :href="pathurl+'role/rlist'" target="rightdis">角色管理</a></li>
@@ -158,6 +158,9 @@ export default {
       pathurl:this.global.pathurl,
 
       Privilege:'',
+      itmes:'',
+      imgurl:require('../assets/images/table.png'),
+      rapurl:require('../assets/images/rap1.png'),
 
 
     }
@@ -235,7 +238,8 @@ created: function () {
 
       //this.reload();
       var _this=this;
-      this.$axios.post(_this.global.repathurl+'api/menu/list',{},{
+      let weburl=_this.global.repathurl;
+      this.$axios.post(weburl+'api/menu/list',{},{
         headers:
           {
 
@@ -244,17 +248,10 @@ created: function () {
 
           }
       }).then(function (response) {
-        //console.log(response.headers);
         _this.menuData = response.data
-        // const blob = new Blob([_this.menuData], {type: ''})
-        // FileSaver.saveAs(blob, 'hahaha.json')
 
         var arr = _this.menuData;
-        /*  $('#tt').tree({
-            url:arr
-          });*/
         $(document).ready(function() {
-
           // 线性数据转化为树。
           function toTree(data, parent_id,level) {
             var tree = [];
@@ -277,12 +274,39 @@ created: function () {
           // 树形数据转化为ul li格式
           function createMenu(data) {
             var menu_body = '<ul>';
+            var stab="";
            // var timestamp1 = Date.parse(new Date());
             for(var i = 0; i < data.length; i++){
               // 一级菜单，默认显示。
+                  let varid= data[i].tree_menu_id
+                  menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList menuList_' + data[i].level + '" ><a   class="navhit"  id="me_'+ data[i].tree_menu_id+'"'+'  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
 
-                  menu_body += '<li id="' + data[i].tree_menu_id + '" class="menuList menuList_' + data[i].level + '" ><a   class="navhit"  href="'+_this.global.pathurl+'navlist/list/l_'+data[i].tree_menu_id+'?listid='+data[i].tree_menu_id+'" target="rightdis">' + data[i].name + '</ a>';
+               _this.$axios.post(weburl+'api/mtable/info',qs.stringify({
 
+                                      menu_id:data[i].tree_menu_id,
+
+                                    }),{
+                                      headers:
+                                        {
+
+                                          'Content-Type':'application/x-www-form-urlencoded',
+                                          "Authorization": 'Bearer'+' '+token,
+                                        }
+                                    }).then(function (res) {
+                                     // _this.items=res.data;
+                                      // console.log(res);
+                                     if(res.data.length>0){
+                                       //alert(varid);
+                                       let rap="<img src='"+_this.rapurl+"'/>";
+                                       $("#me_"+ varid).append(rap);
+                                     }
+
+
+
+
+
+
+                                    });
 
 
 
@@ -305,7 +329,59 @@ created: function () {
           $("#menu1").empty();
           $("#menu1").append(menu_body);
           //this.reload();
+          $(".menuList").click(function (event) {
 
+
+            event.stopPropagation();
+              var tt=$(this);
+              let nid=$(this).attr('id');
+            //  alert($('.tshow_'+nid).css('display'));
+            if($('.tshow_'+nid).css('display')=='block'){
+             // $('.tshow_'+nid).css('display','none');
+              $('.tshow_'+nid).remove();
+            }
+            else{
+             // alert($(this).attr('id'));
+            _this.$axios.post(weburl+'api/mtable/info',qs.stringify({
+
+              menu_id:$(this).attr('id'),
+
+            }),{
+              headers:
+                {
+
+                  'Content-Type':'application/x-www-form-urlencoded',
+                  "Authorization": 'Bearer'+' '+token,
+                }
+            }).then(function (res) {
+              // _this.items=res.data;
+              // console.log(res);
+                  let sta=""
+              res.data.forEach(function (v,i) {
+
+                 sta+= '<div class="tshow_'+nid+'" style="color: white;text-align: left;padding: 5px 20px;"><img style="width:22px;height:22px;" src="'+_this.imgurl+'"><a  style="color: white" target="rightdis" href="'+_this.pathurl+'tabledate/list?id='+v.menu_table_id+'">'+v.show_name+'</a></div>';
+
+
+
+              });
+                  //sta.remove();
+              if($('.tshow_'+nid).css('display')!="block"){
+                $('.tshow_'+nid).css('display','block');
+                tt.after(sta);
+              }
+
+
+
+
+
+                // $(this).append('1111');
+             // $(this).after(sta);
+             //  $(this).after('111');
+              //$(this).append(sta);
+
+            }); }
+
+          })
 
         });
 
@@ -322,18 +398,6 @@ created: function () {
   }
 
 }
-
-
-
-
-//左边导航
-
-
-
-
-
-
-
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

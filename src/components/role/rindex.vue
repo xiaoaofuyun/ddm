@@ -10,7 +10,7 @@
     </div>
     <br>
     <form>
-      <table class="bianjitable" style="width: 500px; margin: 0 auto;border-collapse:collapse;" border="1">
+      <table class="bianjitable" style="width: 500px;border-collapse:collapse;" border="1">
 
         <tr><td>角色名称</td><td><input type="text" v-model="name"></td></tr>
         <tr><td>角色描述</td><td><textarea cols="30" rows="10" v-model="describe"></textarea></td></tr>
@@ -105,48 +105,5 @@
 </script>
 
 <style scoped>
-  .cptop{
-    width: 100%;
-    height: 50px;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    text-align: right;
-  }
-  .cptop span{
-    margin-right: 20px;
-  }
-  .cptop span a{
-    line-height: 30px;
-    padding: 10px 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .bianjitable td{
-    line-height: 40px;
-  }
-  .bianjitable input,.bianjitable textarea,.bianjitable select{
-    line-height: 40px;
-    height: 40px;
-    width: 100%;
-    margin: 0 auto;
-    border: none;
-    padding: 0 10px;
-    box-sizing: border-box;
-  }
-  .bianjitable textarea{
-    height: auto;
-    min-height: 100px;
-  }
-  .bianjitable_but{
-    background-color: #579fe9;
-    color:#fff;
-    width:200px;
-    height: 40px;
-    line-height: 40px;
-    border: none;
-    margin: 20px auto;
-    font-size: 16px;
-    cursor: pointer;
-  }
+
 </style>

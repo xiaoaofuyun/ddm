@@ -4,7 +4,7 @@
       <div >
         <div class="top">
           <h2 class="top_h2">越中档案管理系统</h2>
-        <table style="margin: auto" class="top_table">
+        <table  class="top_table">
           <tr>
             <td> <span>用户名：</span></td>
             <td><input type="text" v-model="username" placeholder="请输入登录名"></td>
@@ -114,7 +114,12 @@
                       //console.log(_this);
 
                     if(response.data.code=='1'){
-                     cookie.set("token",response.data.api_token);
+
+                      var date=new Date();
+                      date.setTime(date.getTime()+4*30*60*1000);
+
+                     cookie.set("token",response.data.api_token,date.toGMTString());
+
                       //console.log(cookie.get('token'));
                      // console.log(response.data);
                       alert('登录成功');
@@ -147,7 +152,6 @@
 
 </script>
 <style scoped>
-
   input{
     height: 25px;
   }

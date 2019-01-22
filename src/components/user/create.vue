@@ -10,7 +10,7 @@
     </div>
     <br>
   <form>
-    <table class="bianjitable" style="width: 500px;  margin: 0 auto;border-collapse:collapse;" border="1">
+    <table class="bianjitable" style="width:500px;border-collapse:collapse;" border="1">
       <tr><td>单位</td><td>
         <select name="" v-model="company_id" @change="getdp(company_id)">
           <option v-for="item in citems" :value="item.company_id">
@@ -129,7 +129,7 @@
               "Authorization": 'Bearer'+' '+token,
             }
         }).then(function (res) {
-          console.log(res);
+         // console.log(res);
           if(res.data.code=='1'){
             alert('添加成功');
             window.location.href=that.global.pathurl+'user/ulist'
@@ -147,7 +147,6 @@
 
 <style scoped>
   .cptop{
-    width: 100%;
     height: 50px;
     background-color: #fff;
     border-bottom: 1px solid #ccc;

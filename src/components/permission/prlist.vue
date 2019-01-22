@@ -33,7 +33,7 @@
 
   <div style="">
 
-    <div style="width: 98%;margin: 20px auto">
+    <div style="width:98%;margin:20px auto">
       <!--<table style=" margin: 0 auto;border-collapse:collapse;" border="1">-->
         <!--<th>按钮编号</th><th>按钮名称</th>-->
         <!--<tr  v-for="item in items.btns">-->
@@ -53,7 +53,7 @@
       </ul>
 
     </div>
-    <div  style="width: 98%;margin: 20px auto">
+    <div  style="width:98%;margin:20px auto">
       <!--<table style=" margin: 0 auto;border-collapse:collapse;" border="1">-->
         <!--<th>菜单编号</th><th>菜单名称</th>-->
         <!--<tr  v-for="item in items.menu">-->
@@ -72,7 +72,7 @@
         </li>
       </ul>
     </div>
-    <div  style="width: 98%;margin: 20px auto">
+    <div  style="width:98%;margin:20px auto">
       <!--<table style=" margin: 0 auto;border-collapse:collapse;" border="1">-->
         <!--<th>表编号</th><th>表名称</th>-->
         <!--<tr  v-for="item in items.table">-->
@@ -91,7 +91,7 @@
       </ul>
 
     </div>
-    <div  style="width: 98%;margin: 20px auto">
+    <div  style="width:98%;margin:20px auto">
       <!--<table style=" margin: 0 auto;border-collapse:collapse;" border="1">-->
         <!--<th>功能路径</th><th>功能名称</th>-->
         <!--<tr  v-for="item in items.sys">-->
@@ -111,7 +111,7 @@
       </ul>
     </div>
   </div>
-  <div style="clear: both"></div>
+  <div style="clear:both"></div>
   <div class="quanxian_but"><router-link  :to="{path:'/permission/pupdate',query:{id:permission_column_id,rid:role_id}}">修改</router-link>
     <router-link :to="{path:'/permission/pdel',query:{id:permission_column_id,rid:role_id}}">删除</router-link>
   </div>
@@ -130,8 +130,7 @@
       //this.roleshow();
       this.csel();
     },
-
-    data(){
+data(){
       return{
         role_id:'',
         items:'',
@@ -221,7 +220,6 @@
 
 <style scoped>
   .cptop{
-    width: 100%;
     height: 50px;
     background-color: #fff;
     border-bottom: 1px solid #ccc;

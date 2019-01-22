@@ -65,9 +65,8 @@
 
 <style scoped>
   .cptop{
-    width: 100%;
     height: 50px;
-    background-color: #fff;
+    background-color:#fff;
     border-bottom: 1px solid #ccc;
     text-align: right;
   }

@@ -11,7 +11,7 @@
   <br>
 
   <form>
-    <table class="bianjitable" style="width: 500px; margin: 0 auto;border-collapse:collapse;" border="1">
+    <table class="bianjitable" style="width:500px;border-collapse:collapse;" border="1">
       <tr><td>部门名称</td><td><input type="text" :name="name" id="name" ></td></tr>
       <tr><td>部门描述</td><td><textarea :describe="describe" id="describe"></textarea></td></tr>
       <tr><td>部门代码</td><td><input type="text" :code="code" id="code"></td></tr>
@@ -136,7 +136,6 @@
 
 <style scoped>
   .cptop{
-    width: 100%;
     height: 50px;
     background-color: #fff;
     border-bottom: 1px solid #ccc;
@@ -152,7 +151,6 @@
     text-decoration: none;
     display: inline-block;
   }
-
   .bianjitable td{
     line-height: 40px;
   }

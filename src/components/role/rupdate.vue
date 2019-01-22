@@ -13,7 +13,7 @@
     <table style=" margin: 0 auto;border-collapse:collapse;" border="1">
 
       <tr><td>角色名称</td><td><input type="text" :name="name" id="name"></td></tr>
-      <tr><td>角色描述</td><td><textarea name="" id="" cols="30" rows="10" :describe="describe" id="describe"></textarea></td></tr>
+      <tr><td>角色描述</td><td><textarea   cols="30" rows="10" :describe="describe" id="describe"></textarea></td></tr>
       <tr><td>单位编号</td><td><input type="text" :company_id="company_id" id="company_id"></td></tr>
       <tr><td colspan="2"><input type="button" value="提交" @click="roleupdate"></td></tr>
     </table>
@@ -76,9 +76,6 @@
         var nid=this.$route.query.id;
         that.$axios.post(that.global.repathurl+'api/role/update',qs.stringify({
           role_id:nid,
-
-
-
           name: $('#name').val(),
           describe:$('#describe').val(),
           company_id:$('#company_id').val(),

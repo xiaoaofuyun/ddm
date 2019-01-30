@@ -48,6 +48,8 @@ import prlist from '@/components/permission/prlist'
 import pupdate from '@/components/permission/pupdate'
 import tlist from '@/components/tabledate/list'
 import tindex from '@/components/tabledate/index'
+import tupdate from '@/components/tabledate/update'
+import tdel from '@/components/tabledate/del'
 Vue.use(Router)
 
 export default new Router({
@@ -259,6 +261,14 @@ export default new Router({
       path: '/tabledate/index',
       name: 'tindex',
       component: tindex
+    },{
+      path: '/tabledate/del',
+      name: 'tdel',
+      component: tdel
+    },{
+      path: '/tabledate/update',
+      name: 'tupdate',
+      component: tupdate
     }
   ]
 })

@@ -38,7 +38,38 @@ window.Vue = Vue;
 //axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 //axios.defaults.headers['Access-Control-Allow-Headers'] = 'access-control-allow-headers,access-control-allow-origin,authorization';
 
+axios.interceptors.request.use(function (config) {
 
+
+  return config;
+}, function (error) {
+
+
+  return Promise.reject(error);
+});
+
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+  // Do something with response data
+  //console.log(response.data.code);
+
+  switch (response.data.code) {
+
+    case -1:
+      // 返回 401 清除token信息并跳转到登录页面
+
+      router.replace({
+        path: 'login',
+        query: {redirect: router.currentRoute.fullPath}
+      })
+  }
+
+ return response;
+}, function (error) {
+  // 对响应错误做点什么
+  //console.log(error)
+  return Promise.reject(error);
+});
 
 
 /* eslint-disable no-new */

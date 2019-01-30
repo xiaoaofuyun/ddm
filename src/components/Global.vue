@@ -3,10 +3,10 @@
 </template>
 
 <script>
-const repathurl="http://test01.com:9003/";
+const repathurl="http://localhost:9003/";
 
 
-  const pathurl='http://localhost:8083/#/';
+  const pathurl='http://localhost:8084/#/';
 
     export default {
         name: "Global",

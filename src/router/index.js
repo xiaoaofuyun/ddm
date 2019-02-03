@@ -50,7 +50,15 @@ import tlist from '@/components/tabledate/list'
 import tindex from '@/components/tabledate/index'
 import tupdate from '@/components/tabledate/update'
 import tdel from '@/components/tabledate/del'
-Vue.use(Router)
+import imexcel from '@/components/tabledate/imexcel'
+import exexcel from '@/components/tabledate/exexcel'
+import ttest   from '@/components/tabledate/test'
+import upfile   from '@/components/tabledate/upfile'
+import packzip   from '@/components/tabledate/pack_zip'
+import pzipdown   from '@/components/tabledate/pzip_down'
+import pziplist   from '@/components/tabledate/pzip_list'
+import filehooking   from '@/components/tabledate/file_hooking'
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -269,6 +277,39 @@ export default new Router({
       path: '/tabledate/update',
       name: 'tupdate',
       component: tupdate
+    },{
+      path: '/tabledate/imexcel',
+      name: 'imexcel',
+      component: imexcel
+    },{
+      path: '/tabledate/test',
+      name: 'ttest',
+      component: ttest
+    },{
+      path: '/tabledate/exexcel',
+      name: 'exexcel',
+      component: exexcel
+    },{
+      path: '/tabledate/upfile',
+      name: 'upfile',
+      component: upfile
+    },{
+      path: '/tabledate/packzip',
+      name: 'packzip',
+      component: packzip
+    },{
+      path: '/tabledate/pzip_down',
+      name: 'pzipdown',
+      component: pzipdown
+    },{
+      path: '/tabledate/pzip_list',
+      name: 'pziplist',
+      component: pziplist
+    },
+    {
+      path: '/tabledate/file_hooking',
+      name: 'filehooking',
+      component: filehooking
     }
   ]
 })

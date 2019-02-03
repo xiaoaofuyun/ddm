@@ -6,8 +6,13 @@
     <span> <router-link :to="{path:'/tabledate/list',query:{id:nid}}">查看</router-link></span>
     <span> <router-link :to="{path:'/tabledate/update',query:{id:nid,cid:checksel}}">修改</router-link></span>
     <span> <router-link :to="{path:'/tabledate/del',query:{id:nid,cid:checksel}}">删除</router-link></span>
-
-
+    <span> <router-link :to="{path:'/tabledate/imexcel',query:{id:nid,cid:checksel}}">导入imexcel</router-link></span>
+    <span> <router-link :to="{path:'/tabledate/exexcel',query:{id:nid,cid:checksel}}">导出exexcel</router-link></span>
+    <span> <router-link :to="{path:'/tabledate/upfile',query:{id:nid}}">上传文件</router-link></span>
+    <span> <router-link :to="{path:'/tabledate/packzip',query:{id:nid}}">打包zip</router-link></span>
+    <span> <router-link :to="{path:'/tabledate/pzip_list',query:{id:nid}}">打包Zip列表</router-link></span>
+    <span> <router-link :to="{path:'/tabledate/pzip_down',query:{id:nid}}">下载Zip包</router-link></span>
+    <span> <router-link :to="{path:'/tabledate/file_hooking',query:{id:nid}}">批量挂载</router-link></span>
   </div>
   <br>
   <form >

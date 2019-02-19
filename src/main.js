@@ -16,12 +16,13 @@ import 'vx-easyui/dist/themes/icon.css';
 import 'vx-easyui/dist/themes/vue.css';
 import easyui from 'vx-easyui';
 import 'babel-polyfill'
+import VueJsonp from 'vue-jsonp'
 // import promise from 'es6-promise';
 // promise.polyfill();
 import 'es6-promise/auto'
 Vue.use(easyui);
 Vue.config.debug = true;
-
+Vue.use(VueJsonp);
 Vue.config.productionTip = false;
 Vue.prototype.global = global_;
 Vue.use(VueCookies);

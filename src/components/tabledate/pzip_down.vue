@@ -26,6 +26,8 @@
 
 <script>
   var qs = require('qs');
+  import FileSaver from 'file-saver';
+
   import $ from 'jquery'
   var cookie=require('vue-cookies');
   var token=cookie.get('token');
@@ -42,7 +44,7 @@
 
         this.$axios.post(_this.global.repathurl+'api/tabledate/pzip_down',qs.stringify({
          id:6,
-          menu_table_id:41,
+          menu_table_id:_this.nid,
         }),{
           headers:
             {
@@ -51,7 +53,11 @@
               "Authorization": 'Bearer'+' '+token,
             }
         }).then(function (res) {
-          console.log(res);
+         // console.log(res.data);
+          var FileSaver = require('file-saver');
+         // var blob = new Blob([res.data], {type: "text/plain;charset=utf-8"});
+          FileSaver.saveAs(res.data, "hello world.zip");
+
 
 
 

@@ -6,7 +6,7 @@
 const repathurl="http://localhost:9003/";
 
 
-  const pathurl='http://localhost:8084/#/';
+  const pathurl='http://localhost:8083/#/';
 
     export default {
         name: "Global",

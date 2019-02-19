@@ -37,7 +37,32 @@
         },methods:{
           submit(){
             var _this=this;
-            this.$axios.put(_this.global.repathurl+'api/tabledate/exexcel',{
+             var json={
+               "menu_table_id":41,
+               "where":[
+                 ["id","<>","15337"]
+               ]
+
+             }
+         /* $.ajax({
+              type:'put',
+              url: _this.global.repathurl+'api/tabledate/exexcel',
+              data:JSON.stringify(json),
+              dataType:'jsonp',
+              jsonp: "callback",
+              jsonpCallback:"handler",
+              traditional:false,
+              beforeSend: function(request) {
+                request.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+
+                request.setRequestHeader("Authorization", 'Bearer'+' '+token);
+              },
+              success: function(result) {
+                console.log(result);
+              }
+            });*/
+
+            /*this.$jsonp.put(_this.global.repathurl+'api/tabledate/exexcel',{
               "menu_table_id":41,
               "where":[
                 ["id","<>","15337"]
@@ -55,6 +80,27 @@
 
 
 
+            })*/
+            this.$axios.put(_this.global.repathurl+'api/tabledate/exexcel',{
+              "menu_table_id":41,
+               "where":[
+                ["id","<>","15337"]
+              ]
+
+            },{
+              headers:
+                {
+
+                  'Content-Type':'application/json',
+                  "Authorization": 'Bearer'+' '+token,
+                }
+            }).then(function (res) {
+              console.log(res);
+
+
+
+            }).catch(function (err) {
+              console.log(err)
             })
           }
       }

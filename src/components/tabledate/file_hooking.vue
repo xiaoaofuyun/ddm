@@ -43,7 +43,7 @@
         var _this=this;
 
         this.$axios.put(_this.global.repathurl+'api/tabledate/file_hooking',{
-          "menu_table_id": 41,
+          "menu_table_id":_this.nid,
           "field": ["ss","aa",'dd','cc']
         },{
           headers:
